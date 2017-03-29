@@ -8,7 +8,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <html ng-app="admin" ng-controller="schoolCtrl">
 
 <head>
-  <title>Pooled Admin Panel Category Flat Bootstrap Responsive Web Template | Tabels :: w3layouts</title>
+  <title>Meri Kitaab</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="keywords" content="Pooled Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
@@ -35,51 +35,21 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <body>
   <div class="page-container">
     <!--/content-inner-->
-    <div class="left-content">
-      <div class="mother-grid-inner">
-        <!--header start here-->
-        <div class="header-main">
-          <div class="logo-w3-agile">
-            <h1><a href="index.html">Apni Kitaab</a></h1>
+    <div class="left-content"> 
+      <!--header start here-->
+      <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Meri Kitaab</a>
           </div>
-          <div class="w3layouts-left">
-
-            <!--search-box-->
-            <div class="w3-search-box">
-              <form action="#" method="post">
-                <input type="text" placeholder="Search..." required="">
-                <input type="submit" value="">
-              </form>
-            </div>
-            <!--//end-search-box-->
-          </div>
-
-        </div>
-        <div class="profile_details w3l">
-          <ul>
-            <li class="dropdown profile_details_drop">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                <div class="profile_img">
-                  <span class="prfil-img"><img src="images/in4.jpg" alt=""> </span>
-                  <div class="user-name">
-                    <p>Malorum</p>
-                    <span>Administrator</span>
-                  </div>
-                  <i class="fa fa-angle-down"></i>
-                  <i class="fa fa-angle-up"></i>
-                  <div class="clearfix"></div>
-                </div>
-              </a>
-              <ul class="dropdown-menu drp-mnu">
-                <li> <a href="#"><i class="fa fa-cog"></i>Change Password</a> </li>
-                <li> <a href="#"><i class="fa fa-sign-out"></i> Logout</a> </li>
-              </ul>
-            </li>
+          <ul class="nav navbar-nav">
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><span class=""></span>{{adminName}}</a></li>
+            <li><a href="#" ng-click="logout()"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
           </ul>
         </div>
-
-        <div class="clearfix"> </div>
-      </div>
+      </nav>
       <!--heder end here-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="index.html">Home</a><i class="fa fa-angle-right"></i>School</li>
@@ -104,47 +74,32 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 </tr>
               </thead>
               <tbody>
-                <!--...................-->
                 <tr ng-repeat="data in schoolsData">
                   <td>{{data.school_name}}</td>
                   <td>{{data.school_city}}</td>
                   <td>{{data.school_poc}}</td>
                   <td>
-                    <spna class="btn  fa fa-eye">
+                    <spna class="btn  fa fa-eye" ng-click="viewSchool(data.school_id)" data-toggle="modal" data-target="#viewSchoolModal">
                       </span>
                   </td>
                   <td>
-                    <spna class="btn  fa fa-edit">
+                    <spna class="btn  fa fa-edit" ng-click="viewSchool(data.school_id)" data-toggle="modal" data-target="#editSchoolModal">
                       </span>
                   </td>
                   <td>
-                    <spna class="btn  fa fa-exclamation-circle">
+                    <spna class="btn  fa fa-exclamation-circle" ng-click="deleteSchool(data.school_id)">
                       </span>
                   </td>
                 </tr>
-                <!--..............................
-                -->
-                <!--<tr>
-                  <td>St. Francis</td>
-                  <td>Delhi</td>
-                  <td>9898765645</td>
-                  <td>
-                    <spna class="btn  fa fa-eye">
-                      </span>
-                  </td>
-                  <td>
-                    <spna class="btn  fa fa-edit">
-                      </span>
-                  </td>
-                  <td>
-                    <spna class="btn  fa fa-exclamation-circle">
-                      </span>
-                  </td>
-                </tr>-->
               </tbody>
             </table>
           </div>
         </div>
+        <center>
+        <ul class="pagination" ng-repeat="i in getNumber(schoolCount) track by $index">
+          <li><a  ng-click="listSchool($index+1)">{{$index+1}}</a></li>
+        </ul>
+        </center>
         <!-- //tables -->
       </div>
       <!-- script-for sticky-nav -->
@@ -167,7 +122,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
       <ul id="menu">
         <li><a href="index.html"><i class="fa fa-tachometer"></i> <span>Dashboard</span><div class="clearfix"></div></a></li>
         <li id="menu-academico"><a href="inbox.html"><i class="fa fa-envelope nav_icon"></i><span>School</span><div class="clearfix"></div></a></li>
-        <li><a href="gallery.html"><i class="fa fa-picture-o" aria-hidden="true"></i><span>Books</span><div class="clearfix"></div></a></li>
+        <li><a href="book.html"><i class="fa fa-picture-o" aria-hidden="true"></i><span>Books</span><div class="clearfix"></div></a></li>
         <li id="menu-academico"><a href="charts.html"><i class="fa fa-bar-chart"></i><span>Orders</span><div class="clearfix"></div></a></li>
       </ul>
     </div>
@@ -196,6 +151,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
               <input type="text" class="form-control sm" id="exampleInputName2" placeholder="School Name" ng-model="name" required>
             </div>
             <div class="form-group">
+              <input type="text" class="form-control sm" id="exampleInputName2" placeholder="School Address" ng-model="address" required>
+            </div>
+            <div class="form-group">
               <div><select name="selector1" id="selector1" class="form-control1" placeholder="City" ng-model="city" required>
       										<option>Delhi</option>
       										<option>Agra</option>
@@ -215,6 +173,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             <div class="form-group">
               <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email/Mobile" ng-model="contact3">
             </div>
+            <div class="radio">
+              <label><input type="radio" name="optradio" value=1 ng-model="status">Active</label>
+            </div>
+            <div class="radio">
+              <label><input type="radio" name="optradio" value=0 ng-model="status">Deactive</label>
+            </div>
+
             <!-- end of input form -->
         </div>
         <!-- end of modal body -->
@@ -229,6 +194,112 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     </div>
   </div>
   <!-- end of modal -->
+
+
+  <div id="editSchoolModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <!-- modal header -->
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Edit School</h4>
+        </div>
+        <!-- End of Modal header -->
+        <!-- Modal body -->
+        <div class="modal-body">
+          <!-- Input Form -->
+          <form class="form" ng-submit="editSchool(singleSchoolData.school_id)">
+            <div class="form-group">
+              <input type="text" class="form-control sm" id="exampleInputName2" placeholder="School Name" ng-model="singleSchoolData.school_name"
+                required>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control sm" id="exampleInputName2" placeholder="School Address" ng-model="singleSchoolData.school_address"
+                required>
+            </div>
+            <div class="form-group">
+              <div><select name="selector1" id="selector1" class="form-control1" placeholder="City" ng-model="singleSchoolData.school_city"
+                  required>
+      										<option>Delhi</option>
+      										<option>Agra</option>
+      										<option>Mathura</option>
+      										<option>Faridabad</option>
+                          <option>Noida</option>
+      										<option>Gurgaon</option>
+      									</select>
+              </div>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control sm" id="exampleInputName2" placeholder="Email/Mobile" ng-model="singleSchoolData.contact1"
+                required>
+            </div>
+            <div class="form-group">
+              <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email/Mobile" ng-model="singleSchoolData.contact2">
+            </div>
+            <div class="form-group">
+              <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email/Mobile" ng-model="singleSchoolData.contact3">
+            </div>
+            <div class="radio">
+              <label><input type="radio" name="optradio" value=1 ng-model="singleSchoolData.school_status">Active</label>
+            </div>
+            <div class="radio">
+              <label><input type="radio" name="optradio" value=0 ng-model="singleSchoolData.school_status">Deactive</label>
+            </div>
+
+            <!-- end of input form -->
+        </div>
+        <!-- end of modal body -->
+        <!-- modal footer -->
+        <div class="modal-footer">
+          <input type="submit" class="btn btn-success" />
+        </div>
+        </form>
+        <!-- end of modal footer -->
+      </div>
+
+    </div>
+  </div>
+  <!-- end of modal -->
+
+
+
+  <div id="viewSchoolModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <!-- modal header -->
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <!-- End of Modal header -->
+        <!-- Modal body -->
+        <div class="container">
+          <div class="jumbotron">
+            <h1>{{singleSchoolData.school_name}}</h1>
+            <p><strong>City:</strong> {{singleSchoolData.school_city}}<br>
+              <strong> Address:</strong> {{singleSchoolData.school_address}}<br>
+              <strong>Status:</strong> {{singleSchoolData.school_status}}<br>
+              <strong>Contact:</strong>{{singleSchoolData.contact1}}<br>
+              <strong>Number of Student:</strong> {{singleSchoolData.school_number_of_student}}</p>
+          </div>
+        </div>
+
+
+      </div>
+      <!-- end of modal body -->
+      <!-- modal footer -->
+      <div class="modal-footer">
+      </div>
+      </form>
+      <!-- end of modal footer -->
+    </div>
+
+  </div>
+  </div>
+  <!-- end of modal -->
   <script type="application/x-javascript">
     addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
   </script>
@@ -239,10 +310,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
   <script src="js/bootstrap.min.js"></script>
   <script type="text/javascript" src="https://unpkg.com/angular-toastr/dist/angular-toastr.tpls.js"></script>
   <script type="text/javascript" src="angular/school.js"></script>
-  <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/1.1.0/toaster.min.css" rel="stylesheet" /> -->
-  <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js" ></script>-->
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/1.1.0/toaster.min.js"></script> -->
-  <!-- <script src="https://code.angularjs.org/1.2.0/angular-animate.min.js" ></script> -->
   <!-- //jQuery -->
   <!-- tables -->
 

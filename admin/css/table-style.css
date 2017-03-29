@@ -72,7 +72,7 @@ table td {
 }
 
 table th {
-    background: #e74c3c;
+    background: #1b93e1;
     color: #fff;
     text-transform: uppercase;
 }
@@ -80,6 +80,7 @@ table th {
 table tr td {
     background: #f3faff;
     color: #424242;
+    width: 25%;
 }
 
 table tr:nth-of-type(2n+2) td {
@@ -96,7 +97,7 @@ table.bt tbody td {
 table.bt tfoot th:before,
 table.bt tfoot td:before,
 table.bt tbody td:before {
-    background: #e74c3c;
+    background: #1b93e1;
     margin-right: 10px;
     padding: 2px 10px;
     color: #000000;
@@ -150,7 +151,7 @@ table.bt tbody td:last-of-type .bt-content {
   }
 
   #table-no-resize tbody td:before {
-	background: #e74c3c;
+	background: #1b93e1;
     content: attr(data-th) ": ";
     color: #000000;
     display: inline-block;
@@ -188,7 +189,7 @@ table.two-axis tr td:first-of-type {
   table.two-axis tr td:first-of-type,
   table.two-axis tr:nth-of-type(2n+2) td:first-of-type,
   table.two-axis tr td:first-of-type:before {
-		background:#e74c3c;
+		background:#1b93e1;
 		color: #ffffff;
   }
 
@@ -247,7 +248,7 @@ table {
 }
 .table thead,
 .table tfoot {
-  background-color: #f05050;
+  background-color: #1b93e1;
   color: #fff;
   text-align: left;
   vertical-align: bottom;

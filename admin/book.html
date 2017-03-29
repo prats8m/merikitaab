@@ -1,0 +1,378 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html ng-app="admin" ng-controller="bookCtrl">
+
+<head>
+  <title>Meri Kitaab</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="keywords" content="Pooled Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+  Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+  <!-- Bootstrap Core CSS -->
+  <link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+  <!-- Custom CSS -->
+  <link href="css/style.css" rel='stylesheet' type='text/css' />
+  <link rel="stylesheet" href="css/morris.css" type="text/css" />
+  <!-- Graph CSS -->
+  <link href="css/font-awesome.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/angular-toastr/dist/angular-toastr.css" />
+  <link rel="stylesheet" type="text/css" href="css/table-style.css" />
+  <link rel="stylesheet" type="text/css" href="css/basictable.css" />
+  <!-- jQuery -->
+  <!-- //tables -->
+  <link href='//fonts.googleapis.com/css?family=Roboto:700,500,300,100italic,100,400' rel='stylesheet' type='text/css' />
+  <link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+  <!-- lined-icons -->
+  <link rel="stylesheet" href="css/icon-font.min.css" type='text/css' />
+  <!-- //lined-icons -->
+</head>
+
+<body>
+  <div class="page-container">
+    <!--/content-inner-->
+    <div class="left-content"> 
+      <!--header start here-->
+      <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Meri Kitaab</a>
+          </div>
+          <ul class="nav navbar-nav">
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><span class=""></span>{{adminName}}</a></li>
+            <li><a href="#" ng-click="logout()"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+          </ul>
+        </div>
+      </nav>
+      <!--heder end here-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Home</a><i class="fa fa-angle-right"></i>Books</li>
+      </ol>
+      <div class="agile-grids">
+        <!-- tables -->
+        <div class="agile-tables">
+          <center>
+            <h1><button type="button" class="btn btn-success" data-toggle="modal" data-target="#addBookModal">Add Book</button></h1>
+          </center>
+          <div class="w3l-table-info">
+            <h2>Books</h2>
+            <table id="table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Class</th>
+                  <th>Author</th>
+                  <th>View</th>
+                  <th>Edit</th>
+                  <th>Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="data in schoolsData">
+                  <td>{{data.school_name}}</td>
+                  <td>{{data.school_city}}</td>
+                  <td>{{data.school_poc}}</td>
+                  <td>
+                    <spna class="btn  fa fa-eye" ng-click="viewSchool(data.school_id)" data-toggle="modal" data-target="#viewBookModal">
+                      </span>
+                  </td>
+                  <td>
+                    <spna class="btn  fa fa-edit" ng-click="viewSchool(data.school_id)" data-toggle="modal" data-target="#editBookModal">
+                      </span>
+                  </td>
+                  <td>
+                    <spna class="btn  fa fa-exclamation-circle" ng-click="deleteSchool(data.school_id)">
+                      </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <center>
+        <ul class="pagination" ng-repeat="i in getNumber(schoolCount) track by $index">
+          <li><a  ng-click="listSchool($index+1)">{{$index+1}}</a></li>
+        </ul>
+        </center>
+        <!-- //tables -->
+      </div>
+      <!-- script-for sticky-nav -->
+      <!-- /script-for sticky-nav -->
+      <!--copy rights start here-->
+      <div class="copyrights">
+        <p>© 2016 Pooled . All Rights Reserved | Design by <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+      </div>
+      <!--COPY rights end here-->
+    </div>
+  </div>
+  <!--//content-inner-->
+  <!--/sidebar-menu-->
+  <div class="sidebar-menu">
+    <header class="logo1">
+      <a href="#" class="sidebar-icon">Admin Panel</a>
+    </header>
+    <div style="border-top:1px ridge rgba(255, 255, 255, 0.15)"></div>
+    <div class="menu">
+      <ul id="menu">
+        <li><a href="index.html"><i class="fa fa-tachometer"></i> <span>Dashboard</span><div class="clearfix"></div></a></li>
+        <li ><a href="inbox.html"><i class="fa fa-envelope nav_icon"></i><span>School</span><div class="clearfix"></div></a></li>
+        <li id="menu-academico"><a href="book.html"><i class="fa fa-picture-o" aria-hidden="true"></i><span>Books</span><div class="clearfix"></div></a></li>
+        <li id="menu-academico"><a href="orders.html"><i class="fa fa-bar-chart"></i><span>Orders</span><div class="clearfix"></div></a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="clearfix"></div>
+  </div>
+  <!-- /Bootstrap Core JavaScript -->
+  <!-- Modal -->
+  <div id="addBookModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <!-- modal header -->
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add Book</h4>
+        </div>
+        <!-- End of Modal header -->
+        <!-- Modal body -->
+        <div class="modal-body">
+          <!-- Input Form -->
+          <form class="form" ng-submit="addSchool()">
+            <div class="form-group">
+              <input type="text" class="form-control sm" id="exampleInputName2" placeholder="School Name" ng-model="name" required>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control sm" id="exampleInputName2" placeholder="School Address" ng-model="address" required>
+            </div>
+            <div class="form-group">
+              <div><select name="selector1" id="selector1" class="form-control1" placeholder="City" ng-model="city" required>
+      										<option>Delhi</option>
+      										<option>Agra</option>
+      										<option>Mathura</option>
+      										<option>Faridabad</option>
+                          <option>Noida</option>
+      										<option>Gurgaon</option>
+      									</select>
+              </div>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control sm" id="exampleInputName2" placeholder="Email/Mobile" ng-model="contact1" required>
+            </div>
+            <div class="form-group">
+              <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email/Mobile" ng-model="contact2">
+            </div>
+            <div class="form-group">
+              <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email/Mobile" ng-model="contact3">
+            </div>
+            <div class="radio">
+              <label><input type="radio" name="optradio" value=1 ng-model="status">Active</label>
+            </div>
+            <div class="radio">
+              <label><input type="radio" name="optradio" value=0 ng-model="status">Deactive</label>
+            </div>
+
+            <!-- end of input form -->
+        </div>
+        <!-- end of modal body -->
+        <!-- modal footer -->
+        <div class="modal-footer">
+          <input type="submit" class="btn btn-success" />
+        </div>
+        </form>
+        <!-- end of modal footer -->
+      </div>
+
+    </div>
+  </div>
+  <!-- end of modal -->
+
+
+  <div id="editBookModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <!-- modal header -->
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Edit School</h4>
+        </div>
+        <!-- End of Modal header -->
+        <!-- Modal body -->
+        <div class="modal-body">
+          <!-- Input Form -->
+          <form class="form" ng-submit="editSchool(singleSchoolData.school_id)">
+            <div class="form-group">
+              <input type="text" class="form-control sm" id="exampleInputName2" placeholder="School Name" ng-model="singleSchoolData.school_name"
+                required>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control sm" id="exampleInputName2" placeholder="School Address" ng-model="singleSchoolData.school_address"
+                required>
+            </div>
+            <div class="form-group">
+              <div><select name="selector1" id="selector1" class="form-control1" placeholder="City" ng-model="singleSchoolData.school_city"
+                  required>
+      										<option>Delhi</option>
+      										<option>Agra</option>
+      										<option>Mathura</option>
+      										<option>Faridabad</option>
+                          <option>Noida</option>
+      										<option>Gurgaon</option>
+      									</select>
+              </div>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control sm" id="exampleInputName2" placeholder="Email/Mobile" ng-model="singleSchoolData.contact1"
+                required>
+            </div>
+            <div class="form-group">
+              <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email/Mobile" ng-model="singleSchoolData.contact2">
+            </div>
+            <div class="form-group">
+              <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email/Mobile" ng-model="singleSchoolData.contact3">
+            </div>
+            <div class="radio">
+              <label><input type="radio" name="optradio" value=1 ng-model="singleSchoolData.school_status">Active</label>
+            </div>
+            <div class="radio">
+              <label><input type="radio" name="optradio" value=0 ng-model="singleSchoolData.school_status">Deactive</label>
+            </div>
+
+            <!-- end of input form -->
+        </div>
+        <!-- end of modal body -->
+        <!-- modal footer -->
+        <div class="modal-footer">
+          <input type="submit" class="btn btn-success" />
+        </div>
+        </form>
+        <!-- end of modal footer -->
+      </div>
+
+    </div>
+  </div>
+  <!-- end of modal -->
+
+
+
+  <div id="viewBookModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <!-- modal header -->
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <!-- End of Modal header -->
+        <!-- Modal body -->
+        <div class="container">
+          <div class="jumbotron">
+            <h1>{{singleSchoolData.school_name}}</h1>
+            <p><strong>City:</strong> {{singleSchoolData.school_city}}<br>
+              <strong> Address:</strong> {{singleSchoolData.school_address}}<br>
+              <strong>Status:</strong> {{singleSchoolData.school_status}}<br>
+              <strong>Contact:</strong>{{singleSchoolData.contact1}}<br>
+              <strong>Number of Student:</strong> {{singleSchoolData.school_number_of_student}}</p>
+          </div>
+        </div>
+
+
+      </div>
+      <!-- end of modal body -->
+      <!-- modal footer -->
+      <div class="modal-footer">
+      </div>
+      </form>
+      <!-- end of modal footer -->
+    </div>
+
+  </div>
+  </div>
+  <!-- end of modal -->
+  <script type="application/x-javascript">
+    addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
+  </script>
+  <!-- //jQuery -->
+  <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+  <!--Angular JS Files-->
+  <script type="text/javascript" src="angular/angular.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://unpkg.com/angular-toastr/dist/angular-toastr.tpls.js"></script>
+  <script type="text/javascript" src="angular/book.js"></script>
+  <!-- //jQuery -->
+  <!-- tables -->
+
+  <script type="text/javascript" src="js/jquery.basictable.min.js"></script>
+  <!--js -->
+  <script src="js/jquery.nicescroll.js"></script>
+  <script src="js/scripts.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      var navoffeset = $(".header-main").offset().top;
+      $(window).scroll(function () {
+        var scrollpos = $(window).scrollTop();
+        if (scrollpos >= navoffeset) {
+          $(".header-main").addClass("fixed");
+        } else {
+          $(".header-main").removeClass("fixed");
+        }
+      });
+
+      $('#table').basictable();
+
+      $('#table-breakpoint').basictable({
+        breakpoint: 768
+      });
+
+      $('#table-swap-axis').basictable({
+        swapAxis: true
+      });
+
+      $('#table-force-off').basictable({
+        forceResponsive: false
+      });
+
+      $('#table-no-resize').basictable({
+        noResize: true
+      });
+
+      $('#table-two-axis').basictable();
+
+      $('#table-max-height').basictable({
+        tableWrapper: true
+      });
+    });
+  </script>
+  <script>
+    var toggle = true;
+
+    $(".sidebar-icon").click(function () {
+      if (toggle) {
+        $(".page-container").addClass("sidebar-collapsed").removeClass("sidebar-collapsed-back");
+        $("#menu span").css({ "position": "absolute" });
+      }
+      else {
+        $(".page-container").removeClass("sidebar-collapsed").addClass("sidebar-collapsed-back");
+        setTimeout(function () {
+          $("#menu span").css({ "position": "relative" });
+        }, 400);
+      }
+
+      toggle = !toggle;
+    });
+  </script>
+  <!-- Bootstrap Core JavaScript -->
+</body>
+
+</html>

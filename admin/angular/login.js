@@ -1,15 +1,4 @@
-angular.module('admin', ['toastr']).config(function (toastrConfig) {
-    angular.extend(toastrConfig, {
-        autoDismiss: true,
-        containerId: 'toast-container',
-        maxOpened: 0,
-        newestOnTop: true,
-        positionClass: 'toast-top-right',
-        preventDuplicates: false,
-        preventOpenDuplicates: false,
-        target: 'body'
-    });
-}).controller('loginCtrl', function ($scope, toastr, $http) {
+app.controller('loginCtrl', function ($scope, $http,$location,toastr) {
 
 
     //0:variable decalration
@@ -27,18 +16,20 @@ angular.module('admin', ['toastr']).config(function (toastrConfig) {
             data: data,
             headers: {
                 "Content-type": "application/json"
-            }
+            } 
         }).then(function (response) {
             console.log(response);
             if (response.data.status == true) {
-                toastr.success(response.data.message, 'Success');
+                //toastr.success(response.data.message, 'Success');
                 callback(1);
             }
             if (response.data.status == false) {
-                toastr.error(response.data.message, 'Error');
+                //toastr.error(response.data.message, 'Error');
             }
+            $('#loader').hide(); 
         }, function (error) {
-            toastr.error(error.data.message, 'Error');
+            $('#loader').hide();
+            //toastr.error(error.data.message, 'Error');
         });
     };
     //end of 1; 
@@ -59,10 +50,12 @@ angular.module('admin', ['toastr']).config(function (toastrConfig) {
                 callback(response.data.data);
             }
             if (response.data.status == false) {
-                toastr.error(response.data.message, 'Error');
+                //toastr.error(response.data.message, 'Error');
             }
+            $('#loader').hide();
         }, function (error) {
-            toastr.error(error.data.message, 'Error');
+            $('#loader').hide();
+            //toastr.error(error.data.message, 'Error');
         });
     };
     //end of 1; 
@@ -75,11 +68,12 @@ angular.module('admin', ['toastr']).config(function (toastrConfig) {
     $scope.login = function () {
         $scope.loginData.username = $scope.username;
         $scope.loginData.password = $scope.password;
+        $('#loader').show();
         $scope.validateData($scope.schoolData, function (result) {
             if (result === 1) {
                 commonSetHTTPService('Post', $scope.loginData, 'admin/admin_login', function (result) {
                     if (result) {
-                        window.location = "http://localhost/meri-kitab/admin/school.html"
+                        $location.path('/school');
                     }
                 });
             }
@@ -87,7 +81,8 @@ angular.module('admin', ['toastr']).config(function (toastrConfig) {
     }
 
     commonGetHTTPService('Get', '', 'admin/is_logged_in', function (result) {
-        if (result) {
+        $('#loader').show();
+        if (result['username']) {
             window.location = "http://localhost/meri-kitab/admin/school.html"
         }
     });

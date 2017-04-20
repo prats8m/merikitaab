@@ -1,0 +1,412 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+  <div class="page-container">
+    <!--/content-inner-->
+    <div class="left-content">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Home</a><i class="fa fa-angle-right"></i>Books</li>
+      </ol>
+      <div class="agile-grids">
+        <!-- tables -->
+        <div class="agile-tables">
+          <center>
+            <h1><button type="button" class="btn btn-success" data-toggle="modal" data-target="#addBookModal">Add Book</button></h1>
+          </center>
+          <div class="w3l-table-info">
+            <h2>Books</h2>
+            <table id="table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Class</th>
+                  <th>Author</th>
+                  <th>Year</th>
+                  <th>View</th>
+                  <th>Edit</th>
+                  <th>Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="data in booksData">
+                  <td>{{data.book_name}}</td>
+                  <td>{{data.book_class}}</td>
+                  <td>{{data.book_author}}</td>
+                  <td>{{data.book_publication_year}}</td>
+                  <td>
+                    <spna class="btn  fa fa-eye" ng-click="viewBook(data.book_id)" data-toggle="modal" data-target="#viewBookModal">
+                      </span>
+                  </td>
+                  <td>
+                    <spna class="btn  fa fa-edit" ng-click="viewBook(data.book_id)" data-toggle="modal" data-target="#editBookModal">
+                      </span>
+                  </td>
+                  <td>
+                    <spna class="btn  fa fa-exclamation-circle" ng-click="deleteBook(data.book_id)">
+                      </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <center>
+          <ul class="pagination" ng-repeat="i in getNumber(schoolCount) track by $index">
+            <li><a ng-click="listSchool($index+1)">{{$index+1}}</a></li>
+          </ul>
+        </center>
+        <!-- //tables -->
+      </div>
+      <!-- script-for sticky-nav -->
+      <!-- /script-for sticky-nav -->
+      <!--copy rights start here-->
+      <div class="copyrights">
+        <p>© 2016 Pooled . All Rights Reserved | Design by <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+      </div>
+      <!--COPY rights end here-->
+    </div>
+  </div>
+  <!--//content-inner-->
+  <!--/sidebar-menu-->
+  <!-- /Bootstrap Core JavaScript -->
+  <!-- Modal -->
+  <div id="addBookModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <!-- modal header -->
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add Book</h4>
+        </div>
+        <!-- End of Modal header -->
+        <!-- Modal body -->
+        <div class="modal-body">
+          <form class="form" ng-submit="addBook()">
+            <div class="row">
+              <div class="form-group col-sm-12 col-md-12">
+                <label for="">Name</label>
+                <input type="text" maxlength="50" name="book_name" ng-model="book.book_name" id="" class="form-control" placeholder="" required
+                  autocomplete="off">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="form-group col-sm-6 col-md-6">
+                <label for="">Author</label>
+                <input type="text" maxlength="30" name="book_author" ng-model="book.book_author" id="" class="form-control" placeholder=""
+                  required autocomplete="off">
+              </div>
+              <div class="form-group col-sm-6 col-md-6">
+                <label for="">Publication</label>
+                <input type="text" maxlength="30" name="book_publication" ng-model="book.book_publication" id="" class="form-control" placeholder=""
+                  required autocomplete="off">
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="form-group col-sm-6 col-md-6">
+                <label for="">Year</label>
+                <input class="only-year form-control" style="width: 300px;" type="text" ng-model="book.book_publication_year">
+
+              </div>
+              <div class="form-group col-sm-6 col-md-6">
+                Language
+                <div>
+                  <select name="selector1" id="selector1" class="form-control1" placeholder="City" ng-model="book.book_language" required>
+      										<option>English</option>
+      										<option>Hindi</option>
+      							</select>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="form-group col-sm-4 col-md-4">
+                <label for="">Price</label>
+                <input type="text" maxlength="30" name="book_price" ng-model="book.book_price" id="" class="form-control" placeholder=""
+                  required autocomplete="off">
+              </div>
+              <div class="form-group col-sm-4 col-md-4">
+                <label for="">Discount Status</label><br>
+                <switch id="enabled" name="enabled" ng-model="book.book_discount_status" on="Active" off="Deactive" class="green"></switch>
+              </div>
+              <div class="form-group col-sm-4 col-md-4">
+                <label for="">Discount </label>
+                <input type="text" maxlength="30" name="book_discount" ng-model="book.book_discount" id="" class="form-control" placeholder=""
+                  required autocomplete="off">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="form-group col-sm-4 col-md-4">
+                Type
+                <div>
+                  <select name="selector1" id="selector1" class="form-control1" placeholder="" ng-model="book.book_type" required>
+      										<option>Gov</option>
+      										<option>Private</option>
+                          <option>Reference</option>
+      							</select>
+                </div>
+              </div>
+              <div class="form-group col-sm-4 col-md-4">
+                <label for="">Status</label><br>
+                <switch id="enabled" name="enabled" ng-model="book.book_status" on="Active" off="Deactive" class="green"></switch>
+              </div>
+              <div class="form-group col-sm-4 col-md-4">
+                <label for="">Number of Stock </label>
+                <input type="text" maxlength="30" name="number_of_stock" ng-model="book.number_of_stock" id="" class="form-control" placeholder=""
+                  required autocomplete="off">
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="form-group col-sm-6 col-md-6">
+                Class
+                <div>
+                  <select name="selector1" id="selector1" class="form-control1" placeholder="" ng-model="book.book_class" required>
+      										<option>1</option>
+      										<option>2</option>
+                          <option>3</option>
+      							</select>
+                </div>
+              </div>
+              <div class="form-group col-sm-6 col-md-6">
+                Schools
+                <multiselect ng-model="book.book_school" options="options" id-prop="id" display-prop="name">
+                </multiselect>
+              </div>
+            </div>
+
+        </div>
+        <!-- end of modal body -->
+        <!-- modal footer -->
+        <div class="modal-footer">
+          <input type="submit" class="btn btn-success" />
+        </div>
+        </form>
+        <!-- end of modal footer -->
+      </div>
+
+    </div>
+  </div>
+  <!-- end of modal -->
+
+
+  <div id="editBookModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <!-- modal header -->
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Edit School</h4>
+        </div>
+        <!-- End of Modal header -->
+        <!-- Modal body -->
+        <div class="modal-body">
+         <form class="form" ng-submit="editBook()">
+            <div class="row">
+              <div class="form-group col-sm-12 col-md-12">
+                <label for="">Name</label>
+                <input type="text" maxlength="50" name="book_name" ng-model="book.book_name" id="" class="form-control" placeholder="" required
+                  autocomplete="off">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="form-group col-sm-6 col-md-6">
+                <label for="">Author</label>
+                <input type="text" maxlength="30" name="book_author" ng-model="book.book_author" id="" class="form-control" placeholder=""
+                  required autocomplete="off">
+              </div>
+              <div class="form-group col-sm-6 col-md-6">
+                <label for="">Publication</label>
+                <input type="text" maxlength="30" name="book_publication" ng-model="book.book_publication" id="" class="form-control" placeholder=""
+                  required autocomplete="off">
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="form-group col-sm-6 col-md-6">
+                <label for="">Year</label>
+                <input class="only-year form-control" style="width: 300px;" type="text" ng-model="book.book_publication_year">
+
+              </div>
+              <div class="form-group col-sm-6 col-md-6">
+                Language
+                <div>
+                  <select name="selector1" id="selector1" class="form-control1" placeholder="City" ng-model="book.book_language" required>
+      										<option>English</option>
+      										<option>Hindi</option>
+      							</select>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="form-group col-sm-4 col-md-4">
+                <label for="">Price</label>
+                <input type="text" maxlength="30" name="book_price" ng-model="book.book_price" id="" class="form-control" placeholder=""
+                  required autocomplete="off">
+              </div>
+              <div class="form-group col-sm-4 col-md-4">
+                <label for="">Discount Status</label><br>
+                <switch id="enabled" name="enabled" ng-model="book.book_discount_status" on="Active" off="Deactive" class="green"></switch>
+              </div>
+              <div class="form-group col-sm-4 col-md-4">
+                <label for="">Discount </label>
+                <input type="text" maxlength="30" name="book_discount" ng-model="book.book_discount" id="" class="form-control" placeholder=""
+                  required autocomplete="off">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="form-group col-sm-4 col-md-4">
+                Type
+                <div>
+                  <select name="selector1" id="selector1" class="form-control1" placeholder="" ng-model="book.book_type" required>
+      										<option>Gov</option>
+      										<option>Private</option>
+                          <option>Reference</option>
+      							</select>
+                </div>
+              </div>
+              <div class="form-group col-sm-4 col-md-4">
+                <label for="">Status</label><br>
+                <switch id="enabled" name="enabled" ng-model="book.book_status" on="Active" off="Deactive" class="green"></switch>
+              </div>
+              <div class="form-group col-sm-4 col-md-4">
+                <label for="">Number of Stock </label>
+                <input type="text" maxlength="30" name="number_of_stock" ng-model="book.number_of_stock" id="" class="form-control" placeholder=""
+                  required autocomplete="off">
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="form-group col-sm-6 col-md-6">
+                Class
+                <div>
+                  <select name="selector1" id="selector1" class="form-control1" placeholder="" ng-model="book.book_class" required>
+      										<option>1</option>
+      										<option>2</option>
+                          <option>3</option>
+      							</select>
+                </div>
+              </div>
+              <div class="form-group col-sm-6 col-md-6">
+                Schools
+                <multiselect ng-model="book.book_school" options="options" id-prop="id" display-prop="name">
+                </multiselect>
+              </div>
+            </div>
+
+        </div>
+        <!-- end of modal body -->
+        <!-- modal footer -->
+        <div class="modal-footer">
+          <input type="submit" class="btn btn-success" />
+        </div>
+        </form><!-- end of modal footer -->
+      </div>
+
+    </div>
+  </div>
+  <!-- end of modal -->
+
+
+
+  <div id="viewBookModal" class="modal fade" role="dialog">
+    <div class="modal-dialog" style="width: 70%;">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <!-- modal header -->
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <!-- End of Modal header -->
+        <!-- Modal body -->
+        <div class="container">
+          <div class="jumbotron" style="width: 76%;">
+            <h1>{{singleBookData.book_name}}</h1>
+            <div class="row">
+              <div class="col-md-4">
+                <strong>Author: </strong>{{singleBookData.book_author}}
+              </div>
+              <div class="col-md-4">
+                <strong>Class: </strong>{{singleBookData.book_class}}
+              </div>
+              <div class="col-md-4">
+                <strong>Publication: </strong>{{singleBookData.book_publication}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <strong>Type: </strong>{{singleBookData.book_type}}
+              </div>
+              <div class="col-md-4">
+                <strong>Language: </strong>{{singleBookData.book_language}}
+              </div>
+              <div class="col-md-4">
+                <strong>Status: </strong>{{singleBookData.book_status}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <strong>Price: </strong>{{singleBookData.book_price}}
+              </div>
+              <div class="col-md-4">
+                <strong>Discount: </strong>{{singleBookData.book_discount}}
+              </div>
+              <div class="col-md-4">
+                <strong>Discount Status: </strong>{{singleBookData.book_discount_status}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <strong>Discounted Price: </strong>{{singleBookData.discounted_price}}
+              </div>
+              <div class="col-md-4">
+                <strong>Number Of Stock: </strong>{{singleBookData.number_of_stock}}
+              </div>
+              <div class="col-md-4">
+                <strong>Book Added By: </strong>{{singleBookData.book_added_by}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <strong>School: </strong>
+              </div>
+            </div>
+              <div  ng-repeat="school in schoolData" >
+                {{school.school_name}}
+              </div>  
+              
+
+          </div>
+        </div>
+
+
+      </div>
+      <!-- end of modal body -->
+      <!-- modal footer -->
+      <div class="modal-footer">
+      </div>
+      </form>
+      <!-- end of modal footer -->
+    </div>
+
+  </div>
+  </div>
+  <!-- end of modal -->
+  

@@ -1,21 +1,11 @@
-angular.module('admin', ['toastr']).config(function (toastrConfig) {
-  angular.extend(toastrConfig, {
-    autoDismiss: true,
-    containerId: 'toast-container',
-    maxOpened: 0,
-    newestOnTop: true,
-    positionClass: 'toast-top-right',
-    preventDuplicates: false,
-    preventOpenDuplicates: false,
-    target: 'body'
-  });
-}).controller('schoolCtrl', function ($scope, toastr, $http) {
+  app.controller('schoolCtrl', function ($scope, $http,$location,$rootScope) {
 
-
+    console.log('prtk');
   //0:variable decalration
   var baseURL = "http://localhost/meri_kitaab/index.php/";
   $scope.schoolData = {};//info of school data
   $scope.singleSchoolData = {};
+  // $scope.headerTemp='./header.html';
   //end of 0
 
 
@@ -32,14 +22,16 @@ angular.module('admin', ['toastr']).config(function (toastrConfig) {
     }).then(function (response) {
       console.log(response);
       if (response.data.status == true) {
-        toastr.success(response.data.message, 'Success');
+        //toastr.success(response.data.message, 'Success');
         callback(1);
       }
       if (response.data.status == false) {
-        toastr.error(response.data.message, 'Error');
+        //toastr.error(response.data.message, 'Error');
       }
+      $('#loader').hide();
     }, function (error) {
-      toastr.error(error.data.message, 'Error');
+      $('#loader').hide();
+      //toastr.error(error.data.message, 'Error');
     });
   };
   //end of 1; 
@@ -60,10 +52,12 @@ angular.module('admin', ['toastr']).config(function (toastrConfig) {
         callback(response.data.data);
       }
       if (response.data.status == false) {
-        toastr.error(response.data.message, 'Error');
+        //toastr.error(response.data.message, 'Error');
       }
+      $('#loader').hide();
     }, function (error) {
-      toastr.error(error.data.message, 'Error');
+      $('#loader').hide();
+      //toastr.error(error.data.message, 'Error');
     });
   };
   //end of 1; 
@@ -81,6 +75,7 @@ angular.module('admin', ['toastr']).config(function (toastrConfig) {
     $scope.schoolData.contact3 = $scope.contact3;
     $scope.schoolData.status = $scope.status;
     $scope.schoolData.address = $scope.address;
+    $('#loader').show();
     $scope.validateData($scope.schoolData, function (result) {
       if (result === 1) {
         commonSetHTTPService('Post', $scope.schoolData, 'admin_school/add_school', function (result) {
@@ -106,7 +101,7 @@ angular.module('admin', ['toastr']).config(function (toastrConfig) {
     $scope.schoolData.contact3 = $scope.singleSchoolData.contact3;
     $scope.schoolData.status = $scope.singleSchoolData.school_status;
     $scope.schoolData.address = $scope.singleSchoolData.school_address;
-    console.log($scope.schoolData);
+    $('#loader').show();
     $scope.validateData($scope.schoolData, function (result) {
       if (result === 1) {
         commonSetHTTPService('Post', $scope.schoolData, 'admin_school/edit_school', function (result) {
@@ -123,9 +118,17 @@ angular.module('admin', ['toastr']).config(function (toastrConfig) {
   };
 
   $scope.viewSchool = function (schoolId) {
+    $('#loader').show();
     $scope.validateData($scope.schoolData, function (result) {
       if (result === 1) {
         commonGetHTTPService('Get', '', 'admin_school/view_school/' + schoolId, function (result) {
+          console.log('result'+JSON.stringify(result));
+          if(result.school_status == 1){
+            result.school_status = true;
+          }
+          else{
+            result.school_status = false;
+          }
           $scope.singleSchoolData = result;
         });
       }
@@ -134,6 +137,7 @@ angular.module('admin', ['toastr']).config(function (toastrConfig) {
 
 
   $scope.deleteSchool = function (schoolId) {
+    $('#loader').show();
     $scope.validateData($scope.schoolData, function (result) {
       if (result === 1) {
         commonSetHTTPService('POST', '', 'admin_school/delete_school/' + schoolId, function (result) {
@@ -147,9 +151,11 @@ angular.module('admin', ['toastr']).config(function (toastrConfig) {
   }
 
   $scope.listSchool = function (index) {
+    $('#loader').show();
     commonGetHTTPService('Get', '', 'admin_school/list_school/' + index, function (result) {
       $scope.schoolsData = result['data'];
       $scope.schoolCount = Math.ceil((result['count'] / 5) + 1);
+      console.log($scope.schoolCount);
     });
   }
 
@@ -161,16 +167,19 @@ angular.module('admin', ['toastr']).config(function (toastrConfig) {
 
 
   commonGetHTTPService('Get', '', 'admin/is_logged_in', function (result) {
-    $scope.adminName = result;
-    console.log($scope.adminName);
-    if (!result) {
-      window.location = "http://localhost/meri-kitab/admin/signin.html"
+     $rootScope.adminName = result['username'];
+   $rootScope.adminLastLogin=result['last_login'];
+    $('#loader').show();
+    console.log(result);
+    if (!result['username']) {
+     $location.path ('/login');
     }
   });
 
   $scope.logout = function () {
+    $('#loader').show();
     commonGetHTTPService('Get', '', 'admin/admin_logout', function (result) {
-      window.location = "http://localhost/meri-kitab/admin/signin.html"
+     $location.path ('/login');
     });
   }
 });

@@ -55,8 +55,8 @@ a:hover { transition: all 200ms ease-in-out; }
     float: right;
     width: 87%;
 }
-a.sidebar-icon:hover{
-	color:#1b93e1;
+a.sidebar-icon:hover {
+    color: #ffffff;
 }
 .page-container.sidebar-collapsed {
   transition: all 100ms linear;
@@ -260,8 +260,8 @@ background-color:#00C6D7!important;
     font-size: 19px;
     padding: 5px 10px;
     border-radius: 0px;
-    color: #000000;
-    background: #fff;
+    color: #ffffff;
+    background: #1b93e1;
     float: none;
 }
 ul#menu i {

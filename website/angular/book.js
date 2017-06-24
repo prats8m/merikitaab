@@ -1,11 +1,13 @@
-app.controller('loginCtrl', function ($scope, $http,$location,toastr) {
+app.controller('bookCtrl', function ($scope, $http, $rootScope, toastr, $location, $window) {
 
 
     //0:variable decalration
     var baseURL = "http://localhost/meri_kitaab/index.php/";
-    $scope.loginData = {};//info of school data
+    $scope.loginData = {}; //info of school data
+    $rootScope.isLoggedIn = 0;
+    $booksData = {};
+    $scope.loadCount = 1;
     //end of 0
-
 
     //1:command set ajax calling function
     var commonSetHTTPService = function (method, data, url, callback) {
@@ -16,20 +18,21 @@ app.controller('loginCtrl', function ($scope, $http,$location,toastr) {
             data: data,
             headers: {
                 "Content-type": "application/json"
-            } 
+            }
         }).then(function (response) {
             console.log(response);
             if (response.data.status == true) {
-                //toastr.success(response.data.message, 'Success');
+                toastr.success(response.data.message, 'Success');
                 callback(1);
             }
             if (response.data.status == false) {
-                //toastr.error(response.data.message, 'Error');
+                console.log(',,,');
+                toastr.error(response.data.message, 'Error');
             }
-            $('#loader').hide(); 
+            $('#loader').hide();
         }, function (error) {
             $('#loader').hide();
-            //toastr.error(error.data.message, 'Error');
+            toastr.error(error.data.message, 'Error');
         });
     };
     //end of 1; 
@@ -50,42 +53,36 @@ app.controller('loginCtrl', function ($scope, $http,$location,toastr) {
                 callback(response.data.data);
             }
             if (response.data.status == false) {
-                //toastr.error(response.data.message, 'Error');
+                toastr.error(response.data.message, 'Error');
             }
             $('#loader').hide();
         }, function (error) {
             $('#loader').hide();
-            //toastr.error(error.data.message, 'Error');
+            toastr.error(error.data.message, 'Error');
         });
     };
     //end of 1; 
 
 
-    $scope.validateData = function (data, callback) {
-        callback(1);
-    }
-
-    $scope.login = function () {
-        $scope.loginData.username = $scope.username;
-        $scope.loginData.password = $scope.password;
+    $scope.listNextBook = function (index) {
         $('#loader').show();
-        $scope.validateData($scope.schoolData, function (result) {
-            if (result === 1) {
-                commonSetHTTPService('Post', $scope.loginData, 'admin/admin_login', function (result) {
-                    if (result) {
-                        $location.path('/school');
-                    }
-                });
-            }
+        commonGetHTTPService('Get', '', 'book/list_book/' + index, function (result) {
+            console.log('books' + result);
+            $scope.booksData = result['data'];
+            $scope.booksCount = Math.ceil((result['count'] / 4) + 1);
+            $scope.loadCount = $scope.loadCount + 1;
         });
     }
 
-    commonGetHTTPService('Get', '', 'admin/is_logged_in', function (result) {
+     $scope.listPrevBook = function (index) {
         $('#loader').show();
-        if (result['username']) {
-            window.location = "http://localhost/meri-kitab/admin/#!/login"
-        }
-    });
+        commonGetHTTPService('Get', '', 'book/list_book/' + index, function (result) {
+            console.log('books' + result);
+            $scope.booksData = result['data'];
+            $scope.booksCount = Math.ceil((result['count'] / 4) + 1);
+            $scope.loadCount = $scope.loadCount - 1;
+        });
+    }
 
-
+    $scope.listNextBook(1);
 });

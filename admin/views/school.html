@@ -4,66 +4,61 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
-<div id="loader">
-  <img src="images/spin.gif" class="ajax-loader" />
-</div>
 <div class="page-container">
   <!--/content-inner-->
-  
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="index.html">Home</a><i class="fa fa-angle-right"></i>School</li>
-    </ol>
-    <div class="agile-grids">
-      <!-- tables -->
-      <div class="agile-tables">
-        <center>
-          <h1><button type="button" class="btn btn-success" data-toggle="modal" data-target="#addSchoolModal">Add School</button></h1>
-        </center>
-        <div class="w3l-table-info">
-          <h2>Schools</h2>
-          <table id="table">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>City</th>
-                <th>Contact</th>
-                <th>View</th>
-                <th>Edit</th>
-                <th>Delete</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr ng-repeat="data in schoolsData">
-                <td>{{data.school_name}}</td>
-                <td>{{data.school_city}}</td>
-                <td>{{data.school_poc}}</td>
-                <td>
-                  <spna class="btn  fa fa-eye" ng-click="viewSchool(data.school_id)" data-toggle="modal" data-target="#viewSchoolModal">
-                    </span>
-                </td>
-                <td>
-                  <spna class="btn  fa fa-edit" ng-click="viewSchool(data.school_id)" data-toggle="modal" data-target="#editSchoolModal">
-                    </span>
-                </td>
-                <td>
-                  <spna class="btn  fa fa-exclamation-circle" ng-click="deleteSchool(data.school_id)">
-                    </span>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-      
+
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="index.html">Home</a><i class="fa fa-angle-right"></i>School</li>
+  </ol>
+  <div class="agile-grids">
+    <!-- tables -->
+    <div class="agile-tables">
       <center>
-        <ul class="pagination" ng-repeat="i in getNumber(schoolCount) track by $index">
-          <li><a ng-click="listSchool($index+1)">{{$index+1}}</a></li>
-        </ul>
+        <h1><button type="button" class="btn btn-success" data-toggle="modal" data-target="#addSchoolModal">Add School</button></h1>
       </center>
-      <!-- //tables -->
- 
+      <div class="w3l-table-info">
+        <h2>Schools</h2>
+        <table id="table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>City</th>
+              <th>Contact</th>
+              <th>View</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="data in schoolsData">
+              <td>{{data.school_name}}</td>
+              <td>{{data.school_city}}</td>
+              <td>{{data.school_poc}}</td>
+              <td>
+                <spna class="btn  fa fa-eye" ng-click="viewSchool(data.school_id)" data-toggle="modal" data-target="#viewSchoolModal">
+                  </span>
+              </td>
+              <td>
+                <spna class="btn  fa fa-edit" ng-click="viewSchool(data.school_id)" data-toggle="modal" data-target="#editSchoolModal">
+                  </span>
+              </td>
+              <td>
+                <spna class="btn  fa fa-exclamation-circle" ng-click="deleteSchool(data.school_id)">
+                  </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+<center>
+  <ul class="pagination" ng-repeat="i in getNumber(schoolCount) track by $index">
+    <li><a ng-click="listSchool($index+1)">{{$index+1}}</a></li>
+  </ul>
+</center>
     </div>
+  </div>
+  <!-- //tables -->
+</div>
 <!--//content-inner-->
 
 
@@ -114,12 +109,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
           <switch id="enabled" name="enabled" ng-model="status" on="Active" off="Deactive" class="green"></switch>
 
           <!-- end of input form -->
-      <!-- end of modal body -->
-      <!-- modal footer -->
-      <div class="modal-footer">
-        <input type="submit" class="btn btn-success" />
-      </div>
-      </form>
+          <!-- end of modal body -->
+          <!-- modal footer -->
+          <div class="modal-footer">
+            <input type="submit" class="btn btn-success" />
+          </div>
+        </form>
       </div>
       <!-- end of modal footer -->
     </div>

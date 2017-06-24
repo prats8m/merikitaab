@@ -1727,7 +1727,7 @@ fieldset[disabled] .btn-template-primary.active {
 }
 #heading-breadcrumbs {
   background: url('../img/texture-bw.png') center center repeat;
-  padding: 20px 0;
+  padding: -15px 0;
   margin-bottom: 40px;
 }
 #heading-breadcrumbs.no-mb {
@@ -1736,7 +1736,7 @@ fieldset[disabled] .btn-template-primary.active {
 #heading-breadcrumbs h1 {
   color: #333333;
   text-transform: uppercase;
-  font-size: 30px;
+  font-size: 21px;
   font-weight: 700;
   letter-spacing: 0.08em;
 }
@@ -2261,7 +2261,7 @@ fieldset[disabled] .btn-template-primary.active {
 .product .text h3 {
   font-size: 14px;
   font-weight: 700;
-  height: 39.6px;
+  height: 0.6px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
@@ -3365,7 +3365,7 @@ h6,
 .h6 {
   font-family: "Roboto", Helvetica, Arial, sans-serif;
   font-weight: 900;
-  line-height: 1.1;
+  line-height: 0;
   color: #333333;
 }
 h1,

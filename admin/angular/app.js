@@ -12,7 +12,7 @@
 
 var baseUrl = 'http://127.0.0.1:8080/';
 console.log(baseUrl);
-var app = angular.module("admin", ['ngRoute','uiSwitch','toastr']).config(function (toastrConfig) {
+var app = angular.module("admin", ['ngRoute','uiSwitch','toastr','btorfs.multiselect']).config(function (toastrConfig) {
   angular.extend(toastrConfig, {
     autoDismiss: true,
     containerId: 'toast-container',
@@ -38,9 +38,12 @@ app.config(function($routeProvider) {
     })
     .when("/book", {
         templateUrl : "./views/book.html",
-        controller : "loginCtrl"
+        controller : "bookCtrl"
     })
-    .when("/blue", {
-        templateUrl : "blue.htm"
+    .when("/dashboard", {
+        templateUrl : "./views/dashboard.html"
+    })
+    .when("/order", {
+        templateUrl : "./views/order.html"
     });
 });

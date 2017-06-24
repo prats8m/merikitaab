@@ -1,4 +1,4 @@
-  app.controller('schoolCtrl', function ($scope, $http,$location,$rootScope) {
+  app.controller('schoolCtrl', function ($scope, $http,$location,$rootScope,toastr) {
 
     console.log('prtk');
   //0:variable decalration
@@ -22,16 +22,16 @@
     }).then(function (response) {
       console.log(response);
       if (response.data.status == true) {
-        //toastr.success(response.data.message, 'Success');
+        toastr.success(response.data.message, 'Success');
         callback(1);
       }
       if (response.data.status == false) {
-        //toastr.error(response.data.message, 'Error');
+        toastr.error(response.data.message, 'Error');
       }
       $('#loader').hide();
     }, function (error) {
       $('#loader').hide();
-      //toastr.error(error.data.message, 'Error');
+      toastr.error(error.data.message, 'Error');
     });
   };
   //end of 1; 
@@ -52,12 +52,12 @@
         callback(response.data.data);
       }
       if (response.data.status == false) {
-        //toastr.error(response.data.message, 'Error');
+        toastr.error(response.data.message, 'Error');
       }
       $('#loader').hide();
     }, function (error) {
       $('#loader').hide();
-      //toastr.error(error.data.message, 'Error');
+      toastr.error(error.data.message, 'Error');
     });
   };
   //end of 1; 
@@ -156,7 +156,7 @@
       $scope.schoolsData = result['data'];
       $scope.schoolCount = Math.ceil((result['count'] / 5) + 1);
       console.log($scope.schoolCount);
-    });
+    }); 
   }
 
   $scope.listSchool(1);

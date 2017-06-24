@@ -1,4 +1,4 @@
-app.controller('bookCtrl', function ($scope, $http,$rootScope) {
+app.controller('bookCtrl', function ($scope, $http,$rootScope,toastr) {
 
 
   //0:variable decalration
@@ -6,24 +6,21 @@ app.controller('bookCtrl', function ($scope, $http,$rootScope) {
   $scope.bookData = {};//info of book data
   $scope.singleBookData = {};
   $scope.book = {};
-  $scope.options = [
-    {
-      "id": 22,
-      "name": "abc",
-      "capital": "Paris"
-    },
-    {
-      "id": 21,
-      "name": "abc",
-      "capital": "London"
-    },
-    {
-      "id": 20,
-      "name": "abc",
-      "capital": "Berlin"
-    }
-  ];
-  //end of 0
+  $scope.options =[
+    {"id":"20","name":"central academy"},
+    {"id":"19","name":"St John"},
+    {"id":"16","name":"school8"},
+    {"id":"15","name":"school7"},
+    {"id":"14","name":"school6"},
+    {"id":"12","name":"school4"},
+    {"id":"11","name":"school3"},
+    {"id":"10","name":"school2"},
+    {"id":"9","name":"school1"},
+    {"id":"7","name":"St john"},
+    {"id":"6","name":"KPS"},
+    {"id":"5","name":"Ishara public school"}
+    ];
+ //end of 0
 
 
   //1:command set ajax calling function
@@ -39,16 +36,16 @@ app.controller('bookCtrl', function ($scope, $http,$rootScope) {
     }).then(function (response) {
       console.log(response);
       if (response.data.status == true) {
-        //toastr.success(response.data.message, 'Success');
+        toastr.success(response.data.message, 'Success');
         callback(1);
       }
       if (response.data.status == false) {
-        //toastr.error(response.data.message, 'Error');
+        toastr.error(response.data.message, 'Error');
       }
       $('#loader').hide();
     }, function (error) {
       $('#loader').hide();
-      //toastr.error(error.data.message, 'Error');
+      toastr.error(error.data.message, 'Error');
     });
   };
   //end of 1; 
@@ -69,12 +66,12 @@ app.controller('bookCtrl', function ($scope, $http,$rootScope) {
         callback(response.data.data);
       }
       if (response.data.status == false) {
-        //toastr.error(response.data.message, 'Error');
+        toastr.error(response.data.message, 'Error');
       }
       $('#loader').hide();
     }, function (error) {
       $('#loader').hide();
-      //toastr.error(error.data.message, 'Error');
+      toastr.error(error.data.message, 'Error');
     });
   };
   //end of 1; 
@@ -85,7 +82,7 @@ app.controller('bookCtrl', function ($scope, $http,$rootScope) {
   }
 
   $scope.addBook = function () {
-    console.log($scope.book);
+    console.log("add book: "+JSON.stringify($scope.book));
     $('#loader').show();
     var count = $scope.book.book_school.length;
     $scope.book.school = [];
@@ -100,6 +97,7 @@ app.controller('bookCtrl', function ($scope, $http,$rootScope) {
       if (result === 1) {
         commonSetHTTPService('Post', $scope.book, 'admin_book/add_book', function (result) {
           if (result) {
+                $('#loader').hide();
             angular.element('#addBookModal').modal('hide');
             commonGetHTTPService('Get', '', 'admin_book/list_book/1', function (result) {
               $scope.booksData = result['data'];
@@ -197,7 +195,7 @@ app.controller('bookCtrl', function ($scope, $http,$rootScope) {
       $scope.bookCount = Math.ceil((result['count'] / 5) + 1);
     });
   }
-
+ 
   $scope.listBook(1);
 
   $scope.getNumber = function (num) {
@@ -221,4 +219,15 @@ app.controller('bookCtrl', function ($scope, $http,$rootScope) {
       window.location = "http://localhost/meri-kitab/admin/signin.html"
     });
   }
+
+   $scope.listSchool = function (index) {
+    $('#loader').show();
+    commonGetHTTPService('Get', '', 'admin_school/list_school/' + index, function (result) {
+      $scope.schoolCount =result['count'];
+        // $scope.options=result['data'];
+        console.log($scope.options);
+    }); 
+  }
+
+    $scope.listSchool(0);
 });

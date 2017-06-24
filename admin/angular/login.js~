@@ -83,7 +83,7 @@ app.controller('loginCtrl', function ($scope, $http,$location,toastr) {
     commonGetHTTPService('Get', '', 'admin/is_logged_in', function (result) {
         $('#loader').show();
         if (result['username']) {
-            window.location = "http://localhost/meri-kitab/admin/#!/login"
+            window.location = "http://localhost/meri-kitab/admin/school.html"
         }
     });
 

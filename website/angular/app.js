@@ -30,16 +30,31 @@ app.config(function($routeProvider) {
     $routeProvider
     .when("/", {
         templateUrl : "./views/index.html"
+        // controller : "appCtrl"
     })
     .when("/signup", {
         templateUrl : "./views/customer-register.html",
         controller : "signupCtrl"
     })
-    .when("/book", {
-        templateUrl : "./views/book.html",
-        controller : "loginCtrl"
+    .when("/school", {
+        templateUrl : "./views/school_list.html",
+        controller : "schoolCtrl"
     })
-    .when("/blue", {
-        templateUrl : "blue.htm"
-    });
+    .when("/schoolsBook", {
+        templateUrl : "./views/school_book_list.html",
+        controller : "schoolCtrl"
+    })
+    .when("/viewBook", {
+        templateUrl : "./views/view_book.html",
+        controller : "viewBookCtrl"
+    })
+    .when("/book", {
+        templateUrl : "./views/book_list.html",
+        controller : "bookCtrl"
+    })
+    .otherwise({
+        templateUrl : "./views/404.html",
+      });
 });
+
+

@@ -10,7 +10,7 @@
 
   /*jshint -W079 */
 
-var baseUrl = 'http://127.0.0.1:8080/';
+var baseUrl = 'http://18.220.55.145/';
 console.log(baseUrl);
 var app = angular.module("website", ['ngRoute','toastr']).config(function (toastrConfig) {
   angular.extend(toastrConfig, {

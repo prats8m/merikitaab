@@ -7,6 +7,9 @@ app.controller('bookCtrl', function ($scope, $http, $rootScope, toastr, $locatio
     $rootScope.isLoggedIn = 0;
     $booksData = {};
     $scope.loadCount = 1;
+    $scope.schoolFilterData = {};
+    $scope.where = {};
+    $scope.filter = {};
     //end of 0
 
     //1:command set ajax calling function
@@ -66,23 +69,69 @@ app.controller('bookCtrl', function ($scope, $http, $rootScope, toastr, $locatio
 
     $scope.listNextBook = function (index) {
         $('#loader').show();
-        commonGetHTTPService('Get', '', 'book/list_book/' + index, function (result) {
-            console.log('books' + result);
+        var where = JSON.stringify($scope.where);
+        commonGetHTTPService('Post',where, 'book/list_book/' + index, function (result) {
             $scope.booksData = result['data'];
             $scope.booksCount = Math.ceil((result['count'] / 4) + 1);
             $scope.loadCount = $scope.loadCount + 1;
         });
     }
+    $scope.listNextBook(1);
 
-     $scope.listPrevBook = function (index) {
+    $scope.listPrevBook = function (index) {
         $('#loader').show();
-        commonGetHTTPService('Get', '', 'book/list_book/' + index, function (result) {
-            console.log('books' + result);
+        var where = JSON.stringify($scope.where);
+        commonGetHTTPService('Post', where, 'book/list_book/' + index, function (result) {
             $scope.booksData = result['data'];
             $scope.booksCount = Math.ceil((result['count'] / 4) + 1);
             $scope.loadCount = $scope.loadCount - 1;
         });
     }
 
-    $scope.listNextBook(1);
+    $scope.listSchoolFilter = function () {
+        $('#loader').show();
+        commonGetHTTPService('Get', '', 'school/list_school_filter/', function (result) {
+            $scope.schoolFilterData = result;
+        });
+    }
+    $scope.listSchoolFilter();
+
+    $scope.listClassFilter = function () {
+        $('#loader').show();
+        commonGetHTTPService('Get', '', 'classes/list_class_filter/', function (result) {
+            $scope.classFilterData = result;
+        });
+    }
+    $scope.listClassFilter();
+
+
+ $scope.listBookTypeFilter = function () {
+        $('#loader').show();
+        commonGetHTTPService('Get', '', 'book_type/list_book_type_filter/', function (result) {
+            $scope.bookTypeFilterData = result;
+        });
+    }
+    $scope.listBookTypeFilter();
+
+
+    
+    $scope.applyFilter = function () {
+        var school = [];
+        
+        for(var idxOfSchool in $scope.filter.school){
+            if($scope.filter.school[idxOfSchool]){
+                school.push(idxOfSchool);
+            }
+        }
+
+        $scope.where.school = school;
+        where = JSON.stringify($scope.where);
+       commonGetHTTPService('Post', where, 'book/list_book/' + 1, function (result) {
+            console.log('fetched books ' + result+" end");
+            $scope.booksData = result['data'];
+            $scope.booksCount = Math.ceil(parseInt((result['count'] / 4)) + 1);
+           $scope.loadCount = 1;
+        });
+    };
+
 });

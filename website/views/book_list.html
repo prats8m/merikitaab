@@ -42,7 +42,7 @@
                             <div class="form-group">
                                 <div class="checkbox" ng-repeat="data  in classFilterData">
                                     <label>
-                                    <input type="checkbox" ng-model="filter.school[data.class_id]" /> {{data.class_name}}<br>
+                                    <input type="checkbox" ng-model="filter.classes[data.class_id]" /> {{data.class_name}}<br>
                                     </label>
                                 </div>
                             </div>
@@ -100,37 +100,20 @@
 
                     <div class="panel-heading">
                         <h3 class="panel-title">Author</h3>
-                        <a class="btn btn-xs btn-danger pull-right" href="#"><i class="fa fa-times-circle"></i> <span class="hidden-sm">Clear</span></a>
+                        <!--<a class="btn btn-xs btn-danger pull-right" href="#"><i class="fa fa-times-circle"></i> <span class="hidden-sm">Clear</span></a>-->
                     </div>
 
                     <div class="panel-body">
 
-                        <form>
+                        <form ng-submit="applyFilter()">
                             <div class="form-group">
-                                <div class="checkbox">
+                                <div class="checkbox" ng-repeat="data in authorFilterData">
                                     <label>
-                                                <input type="checkbox">RS Agrawal (10)
-                                            </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                                <input type="checkbox">RD Sharma (12)
-                                            </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                                <input type="checkbox">S chand (15)
-                                            </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                                <input type="checkbox">Prateek Singh (14)
-                                            </label>
+                                        <input type="checkbox" ng-model="filter.author[data.author_id]">{{data.author_name}}
+                                    </label>
                                 </div>
                             </div>
-
-                            <button class="btn btn-default btn-sm btn-template-main"><i class="fa fa-pencil"></i> Apply</button>
-
+                            <input type="submit" class="btn btn-default btn-sm btn-template-main" value ="Apply">
                         </form>
 
                     </div>

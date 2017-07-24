@@ -33,48 +33,22 @@
                 <div class="panel panel-default sidebar-menu">
 
                     <div class="panel-heading">
-                        <h3 class="panel-title">Cities</h3>
-                        <a class="btn btn-xs btn-danger pull-right" href="#"><i class="fa fa-times-circle"></i> <span class="hidden-sm">Clear</span></a>
+                        <h3 class="panel-title">City</h3>
+                        <!--<a class="btn btn-xs btn-danger pull-right" href="#"><i class="fa fa-times-circle"></i> <span class="hidden-sm">Clear</span></a>-->
                     </div>
 
                     <div class="panel-body">
 
-                        <form>
+                        <form ng-submit="applyFilter()">
                             <div class="form-group">
-                                <div class="checkbox">
+                                <div class="checkbox" ng-repeat="data in cityFilterData">
                                     <label>
-                                        <input type="checkbox">Delhi (10)
+                                        <input type="checkbox" ng-model="filter.city[data.city_id]">{{data.city_name}}
                                     </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                                <input type="checkbox">Noida (12)
-                                            </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                                <input type="checkbox">Gurugram (15)
-                                            </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                                <input type="checkbox">Faridabad (14)
-                                            </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                                <input type="checkbox">Agra (14)
-                                            </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                                <input type="checkbox">Mathura (14)
-                                            </label>
                                 </div>
                             </div>
 
-                            <button class="btn btn-default btn-sm btn-template-main"><i class="fa fa-pencil"></i> Apply</button>
-
+                            <input type="submit" class="btn btn-default btn-sm btn-template-main" value ="Apply">
                         </form>
                     </div>
                 </div>
@@ -83,37 +57,20 @@
 
                     <div class="panel-heading">
                         <h3 class="panel-title">Type</h3>
-                        <a class="btn btn-xs btn-danger pull-right" href="#"><i class="fa fa-times-circle"></i> <span class="hidden-sm">Clear</span></a>
+                        <!--<a class="btn btn-xs btn-danger pull-right" href="#"><i class="fa fa-times-circle"></i> <span class="hidden-sm">Clear</span></a>-->
                     </div>
 
                     <div class="panel-body">
 
-                        <form>
+                        <form ng-submit="applyFilter()">
                             <div class="form-group">
-                                <div class="checkbox">
+                                <div class="checkbox" ng-repeat="data in schoolTypeFilterData">
                                     <label>
-                                                <input type="checkbox">Government (10)
-                                            </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                                <input type="checkbox">Private (12)
-                                            </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                                <input type="checkbox">Defence (15)
-                                            </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                                <input type="checkbox">Kids (14)
-                                            </label>
+                                        <input type="checkbox" ng-model="filter.schoolType[data.st_id]">{{data.st_name}}
+                                    </label>
                                 </div>
                             </div>
-
-                            <button class="btn btn-default btn-sm btn-template-main"><i class="fa fa-pencil"></i> Apply</button>
-
+                            <input type="submit" class="btn btn-default btn-sm btn-template-main" value ="Apply">
                         </form>
 
                     </div>
@@ -131,11 +88,12 @@
 
             <div class="col-sm-9">
 
-                <p class="text-muted lead">Here are the list of schools we are associated with.Now you can shop by school and buy whole bunch of books for a particular class</p>
+                <p class="text-muted lead">Here are the list of schools we are associated with.Now you can shop by school and buy whole bunch of books
+                    for a particular class</p>
 
                 <div class="row products">
 
-                    <div class="col-md-4 col-sm-6">
+                    <div class="col-md-4 col-sm-6" ng-repeat="school in schoolsData">
                         <div class="product">
                             <div class="image">
                                 <a href="" data-toggle="modal" data-target="#school-class-modal">
@@ -144,112 +102,22 @@
                             </div>
                             <!-- /.image -->
                             <div class="text">
-                                <h3><a href="" data-toggle="modal" data-target="#school-class-modal">Kendriya Vidyalaya Delhi</a></h3>
+                                <h3><a href="" data-toggle="modal" data-target="#school-class-modal">{{school.school_name}}</a></h3>
                             </div>
                             <!-- /.text -->
                         </div>
                         <!-- /.product -->
                     </div>
-
-                    <div class="col-md-4 col-sm-6">
-                        <div class="product">
-                            <div class="image">
-                                <a href="shop-detail.html">
-                                    <img src="img/product2.jpg" alt="" class="img-responsive image1">
-                                </a>
-                            </div>
-                            <!-- /.image -->
-                            <div class="text">
-                                <h3><a href="shop-detail.html">St. John Agra</a></h3>
-                            </div>
-                            <!-- /.text -->
-
-                            <div class="ribbon sale">
-                                <div class="theribbon">SALE</div>
-                                <div class="ribbon-background"></div>
-                            </div>
-                            <!-- /.ribbon -->
-
-                            <div class="ribbon new">
-                                <div class="theribbon">NEW</div>
-                                <div class="ribbon-background"></div>
-                            </div>
-                            <!-- /.ribbon -->
-                        </div>
-                        <!-- /.product -->
-                    </div>
-
-                    <div class="col-md-4 col-sm-6">
-                        <div class="product">
-                            <div class="image">
-                                <a href="shop-detail.html">
-                                    <img src="img/product3.jpg" alt="" class="img-responsive image1">
-                                </a>
-                            </div>
-                            <!-- /.image -->
-                            <div class="text">
-                                <h3><a href="shop-detail.html">Central Academy Noida</a></h3>
-                            </div>
-                            <!-- /.text -->
-                        </div>
-                        <!-- /.product -->
-                    </div>
-
-                    <div class="col-md-4 col-sm-6">
-                        <div class="product">
-                            <div class="image">
-                                <a href="shop-detail.html">
-                                    <img src="img/product3.jpg" alt="" class="img-responsive image1">
-                                </a>
-                            </div>
-                            <!-- /.image -->
-                            <div class="text">
-                                <h3><a href="shop-detail.html">Army School Mathura</a></h3>
-                            </div>
-                            <!-- /.text -->
-                        </div>
-                        <!-- /.product -->
-                    </div>
-
-                    <div class="col-md-4 col-sm-6">
-                        <div class="product">
-                            <div class="image">
-                                <a href="shop-detail.html">
-                                    <img src="img/product2.jpg" alt="" class="img-responsive image1">
-                                </a>
-                            </div>
-                            <!-- /.image -->
-                            <div class="text">
-                                <h3><a href="shop-detail.html">Jyoti Vidya Academy Gurugram</a></h3>
-                            </div>
-                            <!-- /.text -->
-
-                            <div class="ribbon new">
-                                <div class="theribbon">NEW</div>
-                                <div class="ribbon-background"></div>
-                            </div>
-                            <!-- /.ribbon -->
-                        </div>
-                        <!-- /.product -->
-                    </div>
-
-                    <div class="col-md-4 col-sm-6">
-                        <div class="product">
-                            <div class="image">
-                                <a href="shop-detail.html">
-                                    <img src="img/product1.jpg" alt="" class="img-responsive image1">
-                                </a>
-                            </div>
-                            <!-- /.image -->
-                            <div class="text">
-                                <h3><a href="shop-detail.html">Central School Noida</a></h3>
-                            </div>
-                            <!-- /.text -->
-                        </div>
-                        <!-- /.product -->
-                    </div>
-                    <!-- /.col-md-4 -->
                 </div>
+                 <div class="pages">
+                    <p class="loadMore">
+                        <button ng-show="loadCount>2" class="btn btn-template-main" ng-click="listPrevSchool(loadCount-2)" style="float:left"><i class="fa fa-chevron-left"></i> Previous</button>
+                    </p>
+                    <p class="loadMore">
+                        <button ng-show="loadCount<schoolsCount" class="btn btn-template-main" ng-click="listNextSchool(loadCount)" style="float:right"><i class="fa fa-chevron-right"></i> Next</button>
+                    </p>
+                </div>
+
                 <!-- /.products -->
 
 
@@ -290,18 +158,18 @@
 </div>
 <!-- /#content -->
 
- <div class="modal fade" id="school-class-modal" >
-            <div class="modal-dialog modal-sm">
+<div class="modal fade" id="school-class-modal">
+    <div class="modal-dialog modal-sm">
 
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="Login">Select Class</h4>
-                    </div>
-                    <div class="modal-body">
-                        <center>
-                        <ul class="pagination">
-                        <li ><a href="/meri-kitab/website/#!/schoolsBook">1</a>
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="Login">Select Class</h4>
+            </div>
+            <div class="modal-body">
+                <center>
+                    <ul class="pagination">
+                        <li><a href="/meri-kitab/website/#!/schoolsBook">1</a>
                         </li>
                         <li><a href="#">2</a>
                         </li>
@@ -311,9 +179,9 @@
                         </li>
                         <li><a href="#">5</a>
                         </li>
-                        </ul>
-                        </center>
-                    </div>
-                </div>
+                    </ul>
+                </center>
             </div>
         </div>
+    </div>
+</div>

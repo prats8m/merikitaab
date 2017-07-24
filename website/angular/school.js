@@ -5,6 +5,10 @@ app.controller('schoolCtrl', function ($scope, $http, $rootScope, toastr, $locat
     var baseURL = "http://localhost/meri_kitaab/index.php/";
     $scope.loginData = {}; //info of school data
     $rootScope.isLoggedIn = 0;
+    $scope.loadCount = 1;
+    $scope.where = {};
+    $scope.filter = {};
+   
     //end of 0
 
     //1:command set ajax calling function
@@ -66,6 +70,77 @@ app.controller('schoolCtrl', function ($scope, $http, $rootScope, toastr, $locat
         callback(1);
     }
 
+      $scope.listNextSchool = function (index) {
+        $('#loader').show();
+        var where = JSON.stringify($scope.where);
+        commonGetHTTPService('Post', where, 'school/list_school/' + index, function (result) {
+            $scope.schoolsData = result['data'];
+            $scope.schoolsCount = Math.ceil((result['count'] / 2) + 1);
+            $scope.loadCount = $scope.loadCount + 1;
+        });
+    }
+    $scope.listNextSchool(1);
 
-    
+    $scope.listPrevSchool = function (index) {
+        $('#loader').show();
+        var where = JSON.stringify($scope.where);
+        commonGetHTTPService('Post', where, 'school/list_school/' + index, function (result) {
+            $scope.schoolsData = result['data'];
+            $scope.schoolsCount = Math.ceil((result['count'] / 2) + 1);
+            $scope.loadCount = $scope.loadCount - 1;
+        });
+    }
+
+
+    // Function to List school city filter
+      $scope.listCityFilter = function () {
+        $('#loader').show();
+        commonGetHTTPService('Get', '', 'city/list_city/', function (result) {
+            $scope.cityFilterData = result;
+        });
+    }
+    $scope.listCityFilter();
+
+    // Function to list school type filter
+      $scope.listSchoolTypeFilter = function () {
+        $('#loader').show();
+        commonGetHTTPService('Get', '', 'school_type/list_school_type/', function (result) {
+            $scope.schoolTypeFilterData = result;
+        });
+    }
+    $scope.listSchoolTypeFilter();
+
+
+    // Apply filter on book listing
+    $scope.applyFilter = function () {
+        var city = [];
+        var schoolType = [];
+
+        if ($scope.filter.city) {
+            for (var idxOfcity in $scope.filter.city) {
+                if ($scope.filter.city[idxOfcity]) {
+                    city.push(idxOfcity);
+                }
+            }
+            $scope.where.city = city;
+        }
+
+        if ($scope.filter.schoolType) {
+            for (var idxOfschoolType in $scope.filter.schoolType) {
+                if ($scope.filter.schoolType[idxOfschoolType]) {
+                    schoolType.push(idxOfschoolType);
+                }
+            }
+            $scope.where.schoolType = schoolType;
+        }
+
+        where = JSON.stringify($scope.where);
+        commonGetHTTPService('Post', where, 'school/list_school/' + 1, function (result) {
+            $scope.schoolsData = result['data'];
+            $scope.schoolsCount = Math.ceil(parseInt((result['count'] / 4)) + 1);
+            $scope.loadCount = 1;
+        });
+    };
+
+
 });

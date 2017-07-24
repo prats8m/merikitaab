@@ -70,7 +70,7 @@ app.controller('bookCtrl', function ($scope, $http, $rootScope, toastr, $locatio
     $scope.listNextBook = function (index) {
         $('#loader').show();
         var where = JSON.stringify($scope.where);
-        commonGetHTTPService('Post',where, 'book/list_book/' + index, function (result) {
+        commonGetHTTPService('Post', where, 'book/list_book/' + index, function (result) {
             $scope.booksData = result['data'];
             $scope.booksCount = Math.ceil((result['count'] / 4) + 1);
             $scope.loadCount = $scope.loadCount + 1;
@@ -105,7 +105,7 @@ app.controller('bookCtrl', function ($scope, $http, $rootScope, toastr, $locatio
     $scope.listClassFilter();
 
 
- $scope.listBookTypeFilter = function () {
+    $scope.listBookTypeFilter = function () {
         $('#loader').show();
         commonGetHTTPService('Get', '', 'book_type/list_book_type_filter/', function (result) {
             $scope.bookTypeFilterData = result;
@@ -114,23 +114,68 @@ app.controller('bookCtrl', function ($scope, $http, $rootScope, toastr, $locatio
     $scope.listBookTypeFilter();
 
 
-    
+    $scope.listAuthorFilter = function () {
+        $('#loader').show();
+        commonGetHTTPService('Get', '', 'author/list_author', function (result) {
+            $scope.authorFilterData = result;
+        });
+    }
+    $scope.listAuthorFilter();
+
+
+    // Apply filter on book listing
     $scope.applyFilter = function () {
         var school = [];
-        
-        for(var idxOfSchool in $scope.filter.school){
-            if($scope.filter.school[idxOfSchool]){
-                school.push(idxOfSchool);
+        var classes = [];
+        var author = [];
+        var bookType = [];
+
+        if ($scope.filter.school) {
+            for (var idxOfSchool in $scope.filter.school) {
+                if ($scope.filter.school[idxOfSchool]) {
+                    school.push(idxOfSchool);
+                }
             }
+            $scope.where.school = school;
         }
 
-        $scope.where.school = school;
+        if ($scope.filter.classes) {
+            for (var idxOfClass in $scope.filter.classes) {
+                if ($scope.filter.classes[idxOfClass]) {
+                    classes.push(idxOfClass);
+                }
+            }
+            $scope.where.class = classes;
+        }
+
+
+        if ($scope.filter.author) {
+            for (var idxOfAuthor in $scope.filter.author) {
+                if ($scope.filter.author[idxOfAuthor]) {
+                    author.push(idxOfAuthor);
+                }
+            }
+            $scope.where.author = author;
+        }
+
+
+        if ($scope.filter.bookType) {
+            for (var idxOfBookType in $scope.filter.bookType) {
+                if ($scope.filter.bookType[idxOfBookType]) {
+                    bookType.push(idxOfAuthor);
+                }
+            }
+            $scope.where.type = bookType;
+        }
+
+
+
         where = JSON.stringify($scope.where);
-       commonGetHTTPService('Post', where, 'book/list_book/' + 1, function (result) {
-            console.log('fetched books ' + result+" end");
+        commonGetHTTPService('Post', where, 'book/list_book/' + 1, function (result) {
+            console.log('fetched books ' + result + " end");
             $scope.booksData = result['data'];
             $scope.booksCount = Math.ceil(parseInt((result['count'] / 4)) + 1);
-           $scope.loadCount = 1;
+            $scope.loadCount = 1;
         });
     };
 

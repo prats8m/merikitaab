@@ -6,6 +6,7 @@ app.controller('bookCtrl', function ($scope, $http,$rootScope,toastr) {
   $scope.bookData = {};//info of book data
   $scope.singleBookData = {};
   $scope.book = {};
+  $scope.authorList = {};
   $scope.options =[
     {"id":"20","name":"central academy"},
     {"id":"19","name":"St John"},
@@ -80,6 +81,20 @@ app.controller('bookCtrl', function ($scope, $http,$rootScope,toastr) {
   $scope.validateData = function (data, callback) {
     callback(1);
   }
+  
+
+  $scope.fetchBookData = function () {
+    $scope.listAuthor();
+  };
+
+
+    $scope.listAuthor = function () {
+        $('#loader').show();
+        commonGetHTTPService('Get', '', 'author/list_author', function (result) {
+            $scope.authorList = result;
+        });
+    }
+
 
   $scope.addBook = function () {
     console.log("add book: "+JSON.stringify($scope.book));
@@ -109,7 +124,7 @@ app.controller('bookCtrl', function ($scope, $http,$rootScope,toastr) {
     });
   };
 
-
+ 
   $scope.editBook = function (bookId) {
     $('#loader').show();
     var count = $scope.book.book_school.length;

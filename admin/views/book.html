@@ -13,7 +13,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <!-- tables -->
     <div class="agile-tables">
       <center>
-        <h1><button type="button" class="btn btn-success" data-toggle="modal" data-target="#addBookModal">Add Book</button></h1>
+        <h1><button type="button" class="btn btn-success" data-toggle="modal" data-target="#addBookModal" ng-click="fetchBookData()">Add Book</button></h1>
       </center>
       <div class="w3l-table-info">
         <h2>Books</h2>
@@ -90,9 +90,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
           <div class="row">
             <div class="form-group col-sm-6 col-md-6">
-              <label for="">Author</label>
-              <input type="text" maxlength="30" name="book_author" ng-model="book.book_author" id="" class="form-control" placeholder=""
-                required autocomplete="off">
+              <div class="form-group">
+                <div>
+                  <label for="">Author</label>
+                  <select name="selector1" id="selector1" class="form-control1" placeholder="author" ng-model="book.book_author" required>
+      										<option ng-repeat="data in authorList" value="{{data.author_id}}">{{data.author_name}}</option>
+      						</select>
+                </div>
+              </div>
             </div>
             <div class="form-group col-sm-6 col-md-6">
               <label for="">Publication</label>
@@ -176,17 +181,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
               </multiselect>
             </div>
           </div>
-      <!-- end of modal body -->
-      <!-- modal footer -->
-      <div class="modal-footer">
-        <input type="submit" class="btn btn-success" />
+          <!-- end of modal body -->
+          <!-- modal footer -->
+          <div class="modal-footer">
+            <input type="submit" class="btn btn-success" />
+          </div>
+        </form>
+        <!-- end of modal footer -->
       </div>
-      </form>
-      <!-- end of modal footer -->
-    </div>
 
+    </div>
   </div>
-</div>
 </div>
 <!-- end of modal -->
 
@@ -302,17 +307,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             </div>
           </div>
 
-      <!-- end of modal body -->
-      <!-- modal footer -->
-      <div class="modal-footer">
-        <input type="submit" class="btn btn-success" />
+          <!-- end of modal body -->
+          <!-- modal footer -->
+          <div class="modal-footer">
+            <input type="submit" class="btn btn-success" />
+          </div>
+        </form>
+        <!-- end of modal footer -->
       </div>
-      </form>
-      <!-- end of modal footer -->
-    </div>
 
+    </div>
   </div>
-</div>
 </div>
 <!-- end of modal -->
 

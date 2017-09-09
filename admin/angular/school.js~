@@ -1,4 +1,4 @@
-  app.controller('schoolCtrl', function ($scope, $http,$location,$rootScope) {
+  app.controller('schoolCtrl', function ($scope, $http,$location,$rootScope,toastr) {
 
     console.log('prtk');
   //0:variable decalration

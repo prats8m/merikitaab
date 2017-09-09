@@ -42,6 +42,27 @@
 
     <link href="css/owl.carousel.css" rel="stylesheet">
     <link href="css/owl.theme.css" rel="stylesheet">
+
+    <style>
+        .carousel-control {
+            width: 8%;
+        }
+
+        .profile {
+            text-align: center;
+        }
+
+        .profile a {
+            transition: all linear 0.35s;
+        }
+
+        .profile a:hover {
+            text-decoration: none;
+            -webkit-box-shadow: 14px 15px 9px -1px rgba(0, 0, 0, 0.49);
+            -moz-box-shadow: 14px 15px 9px -1px rgba(0, 0, 0, 0.49);
+            box-shadow: 14px 15px 9px -1px rgba(0, 0, 0, 0.49);
+        }
+    </style>
 </head>
 <!--____________________________End of Head____________________________________-->
 
@@ -72,7 +93,7 @@ _________________________________________________________ -->
                                 <a href="#" class="external twitter" data-animate-hover="pulse"><i class="fa fa-twitter"></i></a>
                                 <a href="#" class="email" data-animate-hover="pulse"><i class="fa fa-envelope"></i></a>
                             </div>
-                             <div class="login" ng-hide="isLoggedIn">
+                            <div class="login" ng-hide="isLoggedIn">
                                 <a href="/meri-kitab/website/#!/signup"><i class="fa fa-sign-in"></i> <span class="hidden-xs text-uppercase">Sign in</span></a>
                                 <a href="/meri-kitab/website/#!/signup"><i class="fa fa-user"></i> <span class="hidden-xs text-uppercase">Sign up</span></a>
                             </div>
@@ -87,7 +108,7 @@ _________________________________________________________ -->
             </div>
 
 
-            <!-- *** TOP END *** --> 
+            <!-- *** TOP END *** -->
 
             <!-- *** NAVBAR ***
     _________________________________________________________ -->
@@ -119,10 +140,10 @@ _________________________________________________________ -->
                                     <a href="javascript: void(0)" class="dropdown-toggle" data-toggle="dropdown">Home <b class="caret"></b></a>
                                 </li>
                                 <li class="dropdown use-yamm yamm-fw">
-                                    <a href="/meri-kitab/website/#!/book" >Books</a>
+                                    <a href="">Books</a>
                                 </li>
                                 <li class="dropdown use-yamm yamm-fw">
-                                    <a href="/meri-kitab/website/#!/school" >School</a>
+                                    <a href="">School</a>
                                 </li>
                                 <li class="dropdown use-yamm yamm-fw" ng-show="isLoggedIn">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account</a>

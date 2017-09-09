@@ -1,1 +1,10 @@
 /* your styles go here */
+
+.carousel-control{width: 8%;}
+.profile{text-align:center;}
+.profile a{transition:all linear 0.35s;}
+.profile a:hover{text-decoration:none;
+-webkit-box-shadow: 14px 15px 9px -1px rgba(0,0,0,0.49);
+-moz-box-shadow: 14px 15px 9px -1px rgba(0,0,0,0.49);
+box-shadow: 14px 15px 9px -1px rgba(0,0,0,0.49);
+}

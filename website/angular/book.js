@@ -2,7 +2,7 @@ app.controller('bookCtrl', function ($scope, $http, $rootScope, toastr, $locatio
 
 
     //0:variable decalration
-    var baseURL = "http://www.merikitab.com/meri_kitab/index.php/";
+    var baseURL = "http://merikitab.in/meri_kitab/index.php/";
     $scope.loginData = {}; //info of school data
     $rootScope.isLoggedIn = 0;
     $booksData = {};

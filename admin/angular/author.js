@@ -2,7 +2,7 @@ app.controller('authorCtrl', function ($scope, $http, $rootScope, toastr) {
 
 
     //0:variable decalration
-    var baseURL = "http://18.220.55.145/meri_kitaab/index.php/";
+    var baseURL = "http://18.220.55.145/meri_kitab/index.php/";
     $scope.authorsData = {};
     $scope.authorCount = 0;
     $scope.author = {};

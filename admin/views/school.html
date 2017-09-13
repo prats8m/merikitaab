@@ -50,11 +50,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
           </tbody>
         </table>
       </div>
-<center>
-  <ul class="pagination" ng-repeat="i in getNumber(schoolCount) track by $index">
-    <li><a ng-click="listSchool($index+1)">{{$index+1}}</a></li>
-  </ul>
-</center>
+      <center>
+        <ul class="pagination" ng-repeat="i in getNumber(schoolCount) track by $index">
+          <li><a ng-click="listSchool($index+1)">{{$index+1}}</a></li>
+        </ul>
+      </center>
     </div>
   </div>
   <!-- //tables -->
@@ -83,28 +83,36 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             <input type="text" class="form-control sm" id="exampleInputName2" placeholder="School Name" ng-model="name" required>
           </div>
           <div class="form-group">
+            School Image
+            <input type='file' name='file' id='file'><br/>
+          </div>
+          <div class="form-group">
             <input type="text" class="form-control sm" id="exampleInputName2" placeholder="School Address" ng-model="address" required>
           </div>
           <div class="form-group">
+            <input type="number" class="form-control sm" id="exampleInputName3" placeholder="Number Of Student" ng-model="nos" >
+          </div>
+          <div class="form-group">
             <div><select name="selector1" id="selector1" class="form-control1" placeholder="City" ng-model="city" required>
-      										<option>Delhi</option>
-      										<option>Agra</option>
-      										<option>Mathura</option>
-      										<option>Faridabad</option>
-                          <option>Noida</option>
-      										<option>Gurgaon</option>
+      										<option value="">Select City..</option>
+      										<option value="Delhi">Delhi</option>
+      										<option value="Agra">Agra</option>
+      										<option value="Mathura">Mathura</option>
+      										<option value="Faridabad">Faridabad</option>
+                          <option value="Noida">Noida</option>
+      										<option value="Gurgaon">Gurgaon</option>
       									</select>
             </div>
           </div>
           <div class="form-group">
-            <input type="text" class="form-control sm" id="exampleInputName2" placeholder="Email/Mobile" ng-model="contact1" required>
+            <input type="text" class="form-control sm" id="exampleInputName2" placeholder="Email/Mobile" ng-model="contact1" ng-pattern="/^(?:\d{10}|\w+@\w+\.\w{2,3})$/" required>
+          </div>
+          <!--<div class="form-group">
+            <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email/Mobile" ng-model="contact2" ng-pattern="/^(?:\d{10}|\w+@\w+\.\w{2,3})$/">
           </div>
           <div class="form-group">
-            <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email/Mobile" ng-model="contact2">
-          </div>
-          <div class="form-group">
-            <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email/Mobile" ng-model="contact3">
-          </div>
+            <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email/Mobile" ng-model="contact3" ng-pattern="/^(?:\d{10}|\w+@\w+\.\w{2,3})$/">
+          </div>-->
 
           <switch id="enabled" name="enabled" ng-model="status" on="Active" off="Deactive" class="green"></switch>
 
@@ -144,6 +152,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
               required>
           </div>
           <div class="form-group">
+            School Image
+            <input type='file' name='file' id='file2'><br/>
+          </div>
+
+           <div class="form-group">
+            <input type="number" class="form-control sm" id="exampleInputName3" placeholder="Number Of Student" ng-model="singleSchoolData.school_number_of_student" >
+          </div>
+          <div class="form-group">
             <input type="text" class="form-control sm" id="exampleInputName2" placeholder="School Address" ng-model="singleSchoolData.school_address"
               required>
           </div>
@@ -160,15 +176,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             </div>
           </div>
           <div class="form-group">
-            <input type="text" class="form-control sm" id="exampleInputName2" placeholder="Email/Mobile" ng-model="singleSchoolData.contact1"
+            <input type="text" class="form-control sm" id="exampleInputName2" placeholder="Email/Mobile"  ng-pattern="/^(?:\d{10}|\w+@\w+\.\w{2,3})$/" ng-model="singleSchoolData.contact1 "
               required>
           </div>
-          <div class="form-group">
+          <!--<div class="form-group">
             <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email/Mobile" ng-model="singleSchoolData.contact2">
           </div>
           <div class="form-group">
             <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email/Mobile" ng-model="singleSchoolData.contact3">
-          </div>
+          </div>-->
           <switch id="enabled" name="enabled" ng-model="singleSchoolData.school_status" on="Active" off="Deactive" class="green"></switch>
 
           <!-- end of input form -->
@@ -203,11 +219,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
       <div class="container">
         <div class="jumbotron">
           <h1>{{singleSchoolData.school_name}}</h1>
+          <img src="{{singleSchoolData.school_pic}}" width="50%" />
           <p><strong>City:</strong> {{singleSchoolData.school_city}}<br>
             <strong> Address:</strong> {{singleSchoolData.school_address}}<br>
             <strong>Status:</strong> {{singleSchoolData.school_status}}<br>
             <strong>Contact:</strong>{{singleSchoolData.contact1}}<br>
             <strong>Number of Student:</strong> {{singleSchoolData.school_number_of_student}}</p>
+
         </div>
       </div>
 

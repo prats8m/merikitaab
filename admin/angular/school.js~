@@ -2,7 +2,7 @@
 
     console.log('prtk');
   //0:variable decalration
-  var baseURL = "http://localhost/meri_kitaab/index.php/";
+  var baseURL = "http://18.220.55.145/meri_kitaab/index.php/";
   $scope.schoolData = {};//info of school data
   $scope.singleSchoolData = {};
   // $scope.headerTemp='./header.html';

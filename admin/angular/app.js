@@ -12,7 +12,7 @@
 
 var baseUrl = 'http://18.220.55.145/';
 console.log(baseUrl);
-var app = angular.module("admin", ['ngRoute','uiSwitch','toastr','btorfs.multiselect']).config(function (toastrConfig) {
+var app = angular.module("admin", ['ngRoute','uiSwitch','toastr','angularjs-dropdown-multiselect']).config(function (toastrConfig) {
   angular.extend(toastrConfig, {
     autoDismiss: true,
     containerId: 'toast-container',
@@ -42,6 +42,14 @@ app.config(function($routeProvider) {
     })
     .when("/dashboard", {
         templateUrl : "./views/dashboard.html"
+    })
+    .when("/author", {
+        templateUrl : "./views/author.html",
+        controller : "authorCtrl"
+    })
+    .when("/publication", {
+        templateUrl : "./views/publication.html",
+        controller : "publicationCtrl"
     })
     .when("/order", {
         templateUrl : "./views/order.html"

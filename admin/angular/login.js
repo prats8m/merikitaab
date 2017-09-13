@@ -2,7 +2,7 @@ app.controller('loginCtrl', function ($scope, $http,$location,toastr) {
 
 
     //0:variable decalration
-    var baseURL = "http://localhost/meri_kitaab/index.php/";
+    var baseURL = "http://18.220.55.145/meri_kitaab/index.php/";
     $scope.loginData = {};//info of school data
     //end of 0
 
@@ -83,7 +83,7 @@ app.controller('loginCtrl', function ($scope, $http,$location,toastr) {
     commonGetHTTPService('Get', '', 'admin/is_logged_in', function (result) {
         $('#loader').show();
         if (result['username']) {
-            window.location = "http://localhost/meri-kitab/admin/#!/login"
+            window.location = "http://18.220.55.145/meri-kitab/admin/#!/login"
         }
     });
 

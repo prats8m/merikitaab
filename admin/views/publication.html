@@ -1,0 +1,130 @@
+<!--
+Publication: W3layouts
+Publication URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<div class="page-container">
+  <!--/content-inner-->
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="index.html">Home</a><i class="fa fa-angle-right"></i>Publication</li>
+  </ol>
+  <div class="agile-grids">
+    <!-- tables -->
+    <div class="agile-tables">
+      <center>
+        <h1><button type="button" class="btn btn-success" ng-click="clearVariables()" data-toggle="modal" data-target="#addPublicationModal" >Add Publication</button></h1>
+      </center>
+      <div class="w3l-table-info">
+        <h2>Publications</h2>
+        <table id="table">
+          <thead>
+            <tr>
+              <th>Publication ID</th>
+              <th>Name</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="data in publicationsData">
+              <td>Publication_{{data.publication_id}}</td>
+              <td>{{data.publication_name}}</td>
+              <td>
+                <spna class="btn  fa fa-edit" ng-click="viewPublication(data.publication_id);" data-toggle="modal" data-target="#editPublicationModal">
+                  </span>
+              </td>
+              <td>
+                <spna class="btn  fa fa-exclamation-circle" ng-click="deletePublication(data.publication_id)">
+                  </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <center>
+        <ul class="pagination" ng-repeat="i in getNumber(PublicationCount) track by $index">
+          <li><a ng-click="listPublication($index+1)">{{$index+1}}</a></li>
+        </ul>
+      </center>
+    </div>
+    <!-- //tables -->
+  </div>
+  <!-- script-for sticky-nav -->
+  <!-- /script-for sticky-nav -->
+</div>
+<!--//content-inner-->
+<!--/sidebar-menu-->
+<!-- /Bootstrap Core JavaScript -->
+<!-- Modal -->
+<div id="addPublicationModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <!-- modal header -->
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Add Publication</h4>
+      </div>
+      <!-- End of Modal header -->
+      <!-- Modal body -->
+      <div class="modal-body">
+        <form class="form" ng-submit="addPublication()">
+          <div class="row">
+            <div class="form-group col-sm-6 col-md-6">
+              <label for="">Name</label>
+              <input type="text" maxlength="50" name="Publication_name" ng-model="publication.publication_name" id="" class="form-control" placeholder="" required
+                autocomplete="off">
+            </div>
+          </div>
+          <!-- end of modal body -->
+          <!-- modal footer -->
+          <div class="modal-footer">
+            <input type="submit" class="btn btn-success" />
+          </div>
+        </form>
+        <!-- end of modal footer -->
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end of modal -->
+
+
+<div id="editPublicationModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <!-- modal header -->
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Edit Publication</h4>
+      </div>
+      <!-- End of Modal header -->
+      <!-- Modal body -->
+      <div class="modal-body">
+        <form class="form" ng-submit="editPublication()">
+         <div class="row">
+            <div class="form-group col-sm-6 col-md-6">
+              <label for="">Name</label>
+              <input type="text" maxlength="50" name="publication_name" ng-model="publication.publication_name" id="" class="form-control" placeholder="" required
+                autocomplete="off">
+            </div>
+          </div>
+          <!-- end of modal body -->
+          <!-- modal footer -->
+          <div class="modal-footer">
+            <input type="submit" class="btn btn-success" />
+          </div>
+          </form>
+        <!-- end of modal footer -->
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- end of modal -->
+
+

@@ -20,10 +20,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <table id="table">
           <thead>
             <tr>
+              <th>Book ID</th>
               <th>Name</th>
               <th>Class</th>
               <th>Author</th>
-              <th>Year</th>
+              <th>Publication</th>
               <th>View</th>
               <th>Edit</th>
               <th>Delete</th>
@@ -31,16 +32,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
           </thead>
           <tbody>
             <tr ng-repeat="data in booksData">
+              <td>Book_{{data.book_id}}</td>
               <td>{{data.book_name}}</td>
-              <td>{{data.book_class}}</td>
-              <td>{{data.book_author}}</td>
-              <td>{{data.book_publication_year}}</td>
+              <td>{{data.class_name}}</td>
+              <td>{{data.author_name}}</td>
+              <td>{{data.publication_name}}</td>
               <td>
                 <spna class="btn  fa fa-eye" ng-click="viewBook(data.book_id)" data-toggle="modal" data-target="#viewBookModal">
                   </span>
               </td>
               <td>
-                <spna class="btn  fa fa-edit" ng-click="viewBook(data.book_id)" data-toggle="modal" data-target="#editBookModal">
+                <spna class="btn  fa fa-edit" ng-click="viewBook(data.book_id);fetchBookData()" data-toggle="modal" data-target="#editBookModal">
                   </span>
               </td>
               <td>
@@ -81,10 +83,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
       <div class="modal-body">
         <form class="form" ng-submit="addBook()">
           <div class="row">
-            <div class="form-group col-sm-12 col-md-12">
+            <div class="form-group col-sm-6 col-md-6">
               <label for="">Name</label>
               <input type="text" maxlength="50" name="book_name" ng-model="book.book_name" id="" class="form-control" placeholder="" required
                 autocomplete="off">
+            </div>
+            <div class="form-group col-sm-6 col-md-6">
+              Book Image
+              <input type='file' name='file' id='file'>
             </div>
           </div>
 
@@ -93,7 +99,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
               <div class="form-group">
                 <div>
                   <label for="">Author</label>
-                  <select name="selector1" id="selector1" class="form-control1" placeholder="author" ng-model="book.book_author" required>
+                  <select name="selector1" id="selector1" value="Author" class="form-control1" placeholder="author" ng-model="book.book_author"
+                    required>
       										<option ng-repeat="data in authorList" value="{{data.author_id}}">{{data.author_name}}</option>
       						</select>
                 </div>
@@ -101,8 +108,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             </div>
             <div class="form-group col-sm-6 col-md-6">
               <label for="">Publication</label>
-              <input type="text" maxlength="30" name="book_publication" ng-model="book.book_publication" id="" class="form-control" placeholder=""
-                required autocomplete="off">
+              <select name="selector3" id="publication" value="Pub" class="form-control1" placeholder="Pub" ng-model="book.book_publication" required>
+      										<option ng-repeat="data in publicationList" value="{{data.publication_id}}">{{data.publication_name}}</option>
+      						</select>
             </div>
           </div>
 
@@ -110,7 +118,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
           <div class="row">
             <div class="form-group col-sm-6 col-md-6">
               <label for="">Year</label>
-              <input class="only-year form-control" style="width: 300px;" type="text" ng-model="book.book_publication_year">
+              <input class="only-year form-control" style="width: 300px;" type="number" ng-model="book.book_publication_year">
 
             </div>
             <div class="form-group col-sm-6 col-md-6">
@@ -127,7 +135,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
           <div class="row">
             <div class="form-group col-sm-4 col-md-4">
               <label for="">Price</label>
-              <input type="text" maxlength="30" name="book_price" ng-model="book.book_price" id="" class="form-control" placeholder=""
+              <input type="number" maxlength="30" name="book_price" ng-model="book.book_price" id="" class="form-control" placeholder=""
                 required autocomplete="off">
             </div>
             <div class="form-group col-sm-4 col-md-4">
@@ -136,8 +144,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             </div>
             <div class="form-group col-sm-4 col-md-4">
               <label for="">Discount </label>
-              <input type="text" maxlength="30" name="book_discount" ng-model="book.book_discount" id="" class="form-control" placeholder=""
-                required autocomplete="off">
+              <input type="number" maxlength="30" name="book_discount" ng-model="book.book_discount" id="" class="form-control" placeholder="">
             </div>
           </div>
 
@@ -145,11 +152,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             <div class="form-group col-sm-4 col-md-4">
               Type
               <div>
-                <select name="selector1" id="selector1" class="form-control1" placeholder="" ng-model="book.book_type" required>
-      										<option>Gov</option>
-      										<option>Private</option>
-                          <option>Reference</option>
-      							</select>
+                <select name="selector2" id="booktype" value="Type" class="form-control1" placeholder="type" ng-model="book.book_type" required>
+      										<option ng-repeat="data in bookTypeList" value="{{data.bt_id}}">{{data.bt_name}}</option>
+      						</select>
               </div>
             </div>
             <div class="form-group col-sm-4 col-md-4">
@@ -165,20 +170,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 
           <div class="row">
-            <div class="form-group col-sm-6 col-md-6">
+            <div class="form-group col-sm-4 col-md-4">
               Class
               <div>
-                <select name="selector1" id="selector1" class="form-control1" placeholder="" ng-model="book.book_class" required>
-      										<option>1</option>
-      										<option>2</option>
-                          <option>3</option>
-      							</select>
+                <select name="selector3" id="class" value="Pub" class="form-control1" placeholder="Pub" ng-model="book.book_class" required>
+      										<option ng-repeat="data in classList" value="{{data.class_id}}">{{data.class_name}}</option>
+      						</select>
               </div>
             </div>
+            <div class="form-group col-sm-2 col-md-2">
+              </div>
             <div class="form-group col-sm-6 col-md-6">
               Schools
-              <multiselect ng-model="book.book_school" options="options" id-prop="id" display-prop="name">
-              </multiselect>
+              <div ng-dropdown-multiselect="" options="example1data" selected-model="example1model"></div>
             </div>
           </div>
           <!-- end of modal body -->
@@ -204,30 +208,41 @@ License URL: http://creativecommons.org/licenses/by/3.0/
       <!-- modal header -->
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Edit School</h4>
+        <h4 class="modal-title">Edit Book</h4>
       </div>
       <!-- End of Modal header -->
       <!-- Modal body -->
       <div class="modal-body">
         <form class="form" ng-submit="editBook()">
-          <div class="row">
-            <div class="form-group col-sm-12 col-md-12">
+                    <div class="row">
+            <div class="form-group col-sm-6 col-md-6">
               <label for="">Name</label>
               <input type="text" maxlength="50" name="book_name" ng-model="book.book_name" id="" class="form-control" placeholder="" required
                 autocomplete="off">
+            </div>
+            <div class="form-group col-sm-6 col-md-6">
+              Book Image
+              <input type='file' name='file' id='file2'>
             </div>
           </div>
 
           <div class="row">
             <div class="form-group col-sm-6 col-md-6">
-              <label for="">Author</label>
-              <input type="text" maxlength="30" name="book_author" ng-model="book.book_author" id="" class="form-control" placeholder=""
-                required autocomplete="off">
+              <div class="form-group">
+                <div>
+                  <label for="">Author</label>
+                  <select name="selector1" id="selector1" value="Author" class="form-control1" placeholder="author" ng-model="book.book_author"
+                    required>
+      										<option ng-repeat="data in authorList" value="{{data.author_id}}">{{data.author_name}}</option>
+      						</select>
+                </div>
+              </div>
             </div>
             <div class="form-group col-sm-6 col-md-6">
               <label for="">Publication</label>
-              <input type="text" maxlength="30" name="book_publication" ng-model="book.book_publication" id="" class="form-control" placeholder=""
-                required autocomplete="off">
+              <select name="selector3" id="publication" value="Pub" class="form-control1" placeholder="Pub" ng-model="book.book_publication" required>
+      										<option ng-repeat="data in publicationList" value="{{data.publication_id}}">{{data.publication_name}}</option>
+      						</select>
             </div>
           </div>
 
@@ -235,7 +250,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
           <div class="row">
             <div class="form-group col-sm-6 col-md-6">
               <label for="">Year</label>
-              <input class="only-year form-control" style="width: 300px;" type="text" ng-model="book.book_publication_year">
+              <input class="only-year form-control" style="width: 300px;" type="number" ng-model="book.book_publication_year">
 
             </div>
             <div class="form-group col-sm-6 col-md-6">
@@ -252,7 +267,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
           <div class="row">
             <div class="form-group col-sm-4 col-md-4">
               <label for="">Price</label>
-              <input type="text" maxlength="30" name="book_price" ng-model="book.book_price" id="" class="form-control" placeholder=""
+              <input type="number" maxlength="30" name="book_price" ng-model="book.book_price" id="" class="form-control" placeholder=""
                 required autocomplete="off">
             </div>
             <div class="form-group col-sm-4 col-md-4">
@@ -261,8 +276,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             </div>
             <div class="form-group col-sm-4 col-md-4">
               <label for="">Discount </label>
-              <input type="text" maxlength="30" name="book_discount" ng-model="book.book_discount" id="" class="form-control" placeholder=""
-                required autocomplete="off">
+              <input type="number" maxlength="30" name="book_discount" ng-model="book.book_discount" id="" class="form-control" placeholder="">
             </div>
           </div>
 
@@ -270,11 +284,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             <div class="form-group col-sm-4 col-md-4">
               Type
               <div>
-                <select name="selector1" id="selector1" class="form-control1" placeholder="" ng-model="book.book_type" required>
-      										<option>Gov</option>
-      										<option>Private</option>
-                          <option>Reference</option>
-      							</select>
+                <select name="selector2" id="booktype" value="Type" class="form-control1" placeholder="type" ng-model="book.book_type" required>
+      										<option ng-repeat="data in bookTypeList" value="{{data.bt_id}}">{{data.bt_name}}</option>
+      						</select>
               </div>
             </div>
             <div class="form-group col-sm-4 col-md-4">
@@ -290,29 +302,27 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 
           <div class="row">
-            <div class="form-group col-sm-6 col-md-6">
+            <div class="form-group col-sm-4 col-md-4">
               Class
               <div>
-                <select name="selector1" id="selector1" class="form-control1" placeholder="" ng-model="book.book_class" required>
-      										<option>1</option>
-      										<option>2</option>
-                          <option>3</option>
-      							</select>
+                <select name="selector3" id="class" value="Pub" class="form-control1" placeholder="Pub" ng-model="book.book_class" required>
+      										<option ng-repeat="data in classList" value="{{data.class_id}}">{{data.class_name}}</option>
+      						</select>
               </div>
             </div>
+            <div class="form-group col-sm-2 col-md-2">
+              </div>
             <div class="form-group col-sm-6 col-md-6">
               Schools
-              <multiselect ng-model="book.book_school" options="options" id-prop="id" display-prop="name">
-              </multiselect>
+              <div ng-dropdown-multiselect="" options="example1data" selected-model="example1model"></div>
             </div>
           </div>
-
           <!-- end of modal body -->
           <!-- modal footer -->
           <div class="modal-footer">
             <input type="submit" class="btn btn-success" />
           </div>
-        </form>
+          </form>
         <!-- end of modal footer -->
       </div>
 
@@ -336,21 +346,29 @@ License URL: http://creativecommons.org/licenses/by/3.0/
       <!-- Modal body -->
       <div class="container">
         <div class="jumbotron" style="width: 76%;">
-          <h1>{{singleBookData.book_name}}</h1>
+          <div class="row">
+            <div class="col-md-6">
+              <h1>{{singleBookData.book_name}}</h1>
+            </div>
+            <div class="col-md-6" ng-show="bookPicStatus">
+              <img src="{{singleBookData.book_pic}}" width="50%"  />
+            </div>
+          </div>
+
           <div class="row">
             <div class="col-md-4">
-              <strong>Author: </strong>{{singleBookData.book_author}}
+              <strong>Author: </strong>{{singleBookData.author_name}}
             </div>
             <div class="col-md-4">
-              <strong>Class: </strong>{{singleBookData.book_class}}
+              <strong>Class: </strong>{{singleBookData.class_name}}
             </div>
             <div class="col-md-4">
-              <strong>Publication: </strong>{{singleBookData.book_publication}}
+              <strong>Publication: </strong>{{singleBookData.publication_name}}
             </div>
           </div>
           <div class="row">
             <div class="col-md-4">
-              <strong>Type: </strong>{{singleBookData.book_type}}
+              <strong>Type: </strong>{{singleBookData.bt_name}}
             </div>
             <div class="col-md-4">
               <strong>Language: </strong>{{singleBookData.book_language}}

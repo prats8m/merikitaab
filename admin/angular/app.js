@@ -10,7 +10,7 @@
 
   /*jshint -W079 */
 
-var baseUrl = 'http://merikitab.in/';
+var baseUrl = 'http://www.merikitab.in/';
 console.log(baseUrl);
 var app = angular.module("admin", ['ngRoute','uiSwitch','toastr','angularjs-dropdown-multiselect']).config(function (toastrConfig) {
   angular.extend(toastrConfig, {

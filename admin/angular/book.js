@@ -2,7 +2,7 @@ app.controller('bookCtrl', function ($scope, $http, $rootScope, toastr) {
 
 
   //0:variable decalration
-  var baseURL = "http://merikitab.in/meri_kitab/index.php/";
+  var baseURL = "http://www.merikitab.in/meri_kitab/index.php/";
   $scope.bookData = {}; //info of book data
   $scope.singleBookData = {};
   $scope.book = {};
@@ -299,14 +299,14 @@ app.controller('bookCtrl', function ($scope, $http, $rootScope, toastr) {
     $('#loader').show();
     console.log(result);
     if (!result['username']) {
-      window.location = "http://merikitab.in/meri-kitab/admin/signin.html"
+      window.location = "http://www.merikitab.in/meri-kitab/admin/signin.html"
     }
   });
 
   $scope.logout = function () {
     $('#loader').show();
     commonGetHTTPService('Get', '', 'admin/admin_logout', function (result) {
-      window.location = "http://merikitab.in/meri-kitab/admin/signin.html"
+      window.location = "http://www.merikitab.in/meri-kitab/admin/signin.html"
     });
   }
 

@@ -10,7 +10,7 @@
 
   /*jshint -W079 */
 
-var baseUrl = 'www.merikitab.com/';
+var baseUrl = 'http://www.merikitab.com/';
 console.log(baseUrl);
 var app = angular.module("website", ['ngRoute','toastr']).config(function (toastrConfig) {
   angular.extend(toastrConfig, {

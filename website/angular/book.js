@@ -88,39 +88,100 @@ app.controller('bookCtrl', function ($scope, $http, $rootScope, toastr, $locatio
         });
     }
 
-    $scope.listSchoolFilter = function () {
+    $scope.listSchoolFilter = function (limit) {
         $('#loader').show();
+        $scope.schoolFilterData = [];
         commonGetHTTPService('Get', '', 'school/list_school_filter/', function (result) {
-            $scope.schoolFilterData = result;
+            // $scope.schoolFilterData = result;
+            $scope.schoolFilterButtonStatus = 1;
+            if (result.length < limit) {
+                $scope.schoolFilterButtonStatus = 0;
+            }
+            if (limit != 0) {
+                $scope.schoolFilterButtonName = "See More";
+                $scope.schoolFilterButtonValue = 0;
+                for (var idx = 0; idx < limit && idx < result.length; idx++) {
+                    $scope.schoolFilterData.push(result[idx]);
+                }
+            } else {
+                $scope.schoolFilterData = result['data'];
+                $scope.schoolFilterButtonName = "Minimize";
+                $scope.schoolFilterButtonValue = 5;
+            }
         });
     }
-    $scope.listSchoolFilter();
+    $scope.listSchoolFilter(5);
 
-    $scope.listClassFilter = function () {
+    $scope.listClassFilter = function (limit) {
         $('#loader').show();
-        commonGetHTTPService('Get', '', 'classes/list_class_filter/', function (result) {
-            $scope.classFilterData = result;
+        $scope.classFilterData = [];
+        commonGetHTTPService('Get', '', 'classes/list_class/', function (result) {
+            $scope.classFilterButtonStatus = 1;
+            if (result['data'].length < limit) {
+                $scope.classFilterButtonStatus = 0;
+            }
+            if (limit != 0) {
+                $scope.classFilterButtonName = "See More";
+                $scope.classFilterButtonValue = 0;
+                for (var idx = 0; idx < limit; idx++) {
+                    $scope.classFilterData.push(result['data'][idx]);
+                }
+            } else {
+                $scope.classFilterData = result['data'];
+                $scope.classFilterButtonName = "Minimize";
+                $scope.classFilterButtonValue = 5;
+            }
         });
     }
-    $scope.listClassFilter();
+    $scope.listClassFilter(5);
 
 
-    $scope.listBookTypeFilter = function () {
+    $scope.listBookTypeFilter = function (limit) {
         $('#loader').show();
-        commonGetHTTPService('Get', '', 'book_type/list_book_type_filter/', function (result) {
-            $scope.bookTypeFilterData = result;
+        $scope.bookTypeFilterData = [];
+        commonGetHTTPService('Get', '', 'book_type/list_book_type/', function (result) {
+            $scope.bookTypeFilterButtonStatus = 1;
+            if (result['data'].length < limit) {
+                $scope.bookTypeFilterButtonStatus = 0;
+            }
+            if (limit != 0) {
+                $scope.bookTypeFilterButtonName = "See More";
+                $scope.bookTypeFilterButtonValue = 0;
+                for (var idx = 0; idx < limit; idx++) {
+                    $scope.bookTypeFilterData.push(result['data'][idx]);
+                }
+            } else {
+                $scope.bookTypeFilterData = result['data'];
+                $scope.bookTypeFilterButtonName = "Minimize";
+                $scope.bookTypeFilterButtonValue = 5;
+            }
         });
     }
-    $scope.listBookTypeFilter();
+    $scope.listBookTypeFilter(5);
 
 
-    $scope.listAuthorFilter = function () {
+    $scope.listAuthorFilter = function (limit) {
         $('#loader').show();
+        $scope.authorFilterData = [];
         commonGetHTTPService('Get', '', 'author/list_author', function (result) {
-            $scope.authorFilterData = result;
+            $scope.authorFilterButtonStatus = 1;
+            if (result['data'].length < limit) {
+                $scope.authorFilterButtonStatus = 0;
+            }
+            if (limit != 0) {
+                $scope.authorFilterButtonName = "See More";
+                $scope.authorFilterButtonValue = 0;
+                for (var idx = 0; idx < limit; idx++) {
+                    $scope.authorFilterData.push(result['data'][idx]);
+                }
+            } else {
+                $scope.authorFilterData = result['data'];
+                $scope.authorFilterButtonName = "Minimize";
+                $scope.authorFilterButtonValue = 5;
+            }
         });
     }
-    $scope.listAuthorFilter();
+    $scope.listAuthorFilter(5);
 
 
     // Apply filter on book listing

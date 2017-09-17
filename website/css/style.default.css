@@ -877,7 +877,7 @@ fieldset[disabled] .btn-template-primary.active {
 .panel.sidebar-menu .panel-heading {
   text-transform: uppercase;
   margin-bottom: 10px;
-  background: none;
+  /*background: none;*/
   padding: 0;
   letter-spacing: 0.08em;
   border-bottom: none;
@@ -888,7 +888,7 @@ fieldset[disabled] .btn-template-primary.active {
 .panel.sidebar-menu .panel-heading h4,
 .panel.sidebar-menu .panel-heading h5 {
   display: inline-block;
-  border-bottom: solid 5px #38a7bb;
+  /*border-bottom: solid 5px #38a7bb;*/
   line-height: 1.1;
   margin-bottom: 0;
   padding-bottom: 10px;

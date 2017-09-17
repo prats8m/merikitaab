@@ -28,41 +28,56 @@
     <!-- Custom stylesheet - for your changes -->
     <link href="css/custom.css" rel="stylesheet">
 
-    <!-- Favicon and apple touch icons-->
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
-    <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="57x57" href="img/apple-touch-icon-57x57.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="76x76" href="img/apple-touch-icon-76x76.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png" />
-    <link rel="apple-touch-icon" sizes="120x120" href="img/apple-touch-icon-120x120.png" />
-    <link rel="apple-touch-icon" sizes="144x144" href="img/apple-touch-icon-144x144.png" />
-    <link rel="apple-touch-icon" sizes="152x152" href="img/apple-touch-icon-152x152.png" />
-    <!-- owl carousel css -->
+    <script type="application/x-javascript">
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
 
-    <link href="css/owl.carousel.css" rel="stylesheet">
-    <link href="css/owl.theme.css" rel="stylesheet">
-
-    <style>
-        .carousel-control {
-            width: 8%;
+        function hideURLbar() {
+            window.scrollTo(0, 1);
         }
-
-        .profile {
-            text-align: center;
-        }
-
-        .profile a {
-            transition: all linear 0.35s;
-        }
-
-        .profile a:hover {
-            text-decoration: none;
-            -webkit-box-shadow: 14px 15px 9px -1px rgba(0, 0, 0, 0.49);
-            -moz-box-shadow: 14px 15px 9px -1px rgba(0, 0, 0, 0.49);
-            box-shadow: 14px 15px 9px -1px rgba(0, 0, 0, 0.49);
-        }
-    </style>
+    </script>
+    <!--//for-mobile-apps -->
+    <!--Custom Theme files -->
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
+    <!--//Custom Theme files -->
+    <!--js-->
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/modernizr.custom.js"></script>
+    <!--//js-->
+    <!--cart-->
+    <script src="js/simpleCart.min.js"></script>
+    <!--cart-->
+    <!--web-fonts-->
+    <link href='//fonts.googleapis.com/css?family=Raleway:400,100,100italic,200,200italic,300,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic'
+        rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic'
+        rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Pompiere' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Fascinate' rel='stylesheet' type='text/css'>
+    <!--web-fonts-->
+    <!--animation-effect-->
+    <link href="css/animate.min.css" rel="stylesheet">
+    <script src="js/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+    <!--//animation-effect-->
+    <!--start-smooth-scrolling-->
+    <script type="text/javascript" src="js/move-top.js"></script>
+    <script type="text/javascript" src="js/easing.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({
+                    scrollTop: $(this.hash).offset().top
+                }, 1000);
+            });
+        });
+    </script>
 </head>
 <!--____________________________End of Head____________________________________-->
 
@@ -71,188 +86,169 @@
 <!--____________________________Start of body_____________________________________-->
 
 <body ng-app="website" ng-controller="appCtrl">
-    <div id="all">
-        <header>
-
-            <!-- *** TOP ***
-_________________________________________________________ -->
-
-            <div id="top">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xs-5 contact">
-                            <p class="hidden-sm hidden-xs">Contact us on 8527696059 or shiv@merikitab.in</p>
-                            <p class="hidden-md hidden-lg"><a href="#" data-animate-hover="pulse"><i class="fa fa-phone"></i></a>
-                                <a href="#" data-animate-hover="pulse"><i class="fa fa-envelope"></i></a>
-                            </p>
-                        </div>
-                        <div class="col-xs-7">
-                            <div class="social">
-                                <a href="http://www.fb.com/merikitab.in" class="external facebook" data-animate-hover="pulse"><i class="fa fa-facebook"></i></a>
-                                <a href="#" class="external gplus" data-animate-hover="pulse"><i class="fa fa-google-plus"></i></a>
-                                <a href="#" class="external twitter" data-animate-hover="pulse"><i class="fa fa-twitter"></i></a>
-                                <a href="#" class="email" data-animate-hover="pulse"><i class="fa fa-envelope"></i></a>
-                            </div>
-                            <div class="login" ng-hide="isLoggedIn">
-                                <a href="/meri-kitab/website/#!/signup"><i class="fa fa-sign-in"></i> <span class="hidden-xs text-uppercase">Sign in</span></a>
-                                <a href="/meri-kitab/website/#!/signup"><i class="fa fa-user"></i> <span class="hidden-xs text-uppercase">Sign up</span></a>
-                            </div>
-                            <div class="login" ng-show="isLoggedIn">
-                                <span class="hidden-xs text-uppercase">Welcome </span>{{customer_name}}
-                                <a href="" ng-click="logout()"><i class="fa fa-user"></i> <span class="hidden-xs" >Logout</span></a>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <!-- *** TOP END *** -->
-
-            <!-- *** NAVBAR ***
-    _________________________________________________________ -->
-
-            <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
-
-                <div class="navbar navbar-default yamm" role="navigation" id="navbar">
-
-                    <div class="container">
-                        <div class="navbar-header">
-
-                            <a class="navbar-brand home" href="index.html">
-                                <img src="img/logo.png" style="width: 80%;" alt="Universal logo" class="hidden-xs hidden-sm">
-                                <img src="img/logo-small.png" alt="Universal logo" class="visible-xs visible-sm"><span class="sr-only">Universal - go to homepage</span>
-                            </a>
-                            <div class="navbar-buttons">
-                                <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
-                                    <span class="sr-only">Toggle navigation</span>
-                                    <i class="fa fa-align-justify"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <!--/.navbar-header -->
-
-                        <div class="navbar-collapse collapse" id="navigation">
-
-                            <ul class="nav navbar-nav navbar-right">
-                                <li class="dropdown active">
-                                    <a href="javascript: void(0)" class="dropdown-toggle" data-toggle="dropdown">Home <b class="caret"></b></a>
-                                </li>
-                                <li class="dropdown use-yamm yamm-fw">
-                                    <a href="">Books</a>
-                                </li>
-                                <li class="dropdown use-yamm yamm-fw">
-                                    <a href="">School</a>
-                                </li>
-                                <li class="dropdown use-yamm yamm-fw" ng-show="isLoggedIn">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account</a>
-                                </li>
-
-                                <li class="dropdown">
-                                    <a href="javascript: void(0)" class="dropdown-toggle">Help</a>
-                                </li>
-                            </ul>
-
-                        </div>
-                        <!--/.nav-collapse -->
-
-
-
-                        <div class="collapse clearfix" id="search">
-
-                            <form class="navbar-form" role="search">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Search">
-                                    <span class="input-group-btn">
-
-                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
-
-                </span>
-                                </div>
-                            </form>
-
-                        </div>
-                        <!--/.nav-collapse -->
-
-                    </div>
-
-
-                </div>
-                <!-- /#navbar -->
-
-            </div>
-
-            <!-- *** NAVBAR END *** -->
-
-        </header>
-
-        <!-- *** LOGIN MODAL ***
-_________________________________________________________ -->
-
-        <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
-            <div class="modal-dialog modal-sm">
-
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="Login">Customer login</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form action="customer-orders.html" method="post">
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="email_modal" placeholder="email">
-                            </div>
-                            <div class="form-group">
-                                <input type="password" class="form-control" id="password_modal" placeholder="password">
-                            </div>
-
-                            <p class="text-center">
-                                <button class="btn btn-template-main"><i class="fa fa-sign-in"></i> Log in</button>
-                            </p>
-
-                        </form>
-
-                        <p class="text-center text-muted">Not registered yet?</p>
-                        <p class="text-center text-muted"><a href="customer-register.html"><strong>Register now</strong></a>! It is easy and done in 1&nbsp;minute
-                            and gives you access to special discounts and much more!</p>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- *** LOGIN MODAL END *** -->
-        <div ng-view></div>
-
-        <!-- *** GET IT END *** -->
-
-
-        <!-- *** FOOTER ***
-_________________________________________________________ -->
-
-        <!-- /#footer -->
-
-        <!-- *** FOOTER END *** -->
-
-        <!-- *** COPYRIGHT ***
-_________________________________________________________ -->
-
-        <div id="copyright">
+    <!--header-->
+    <div class="header">
+        <div class="top-header navbar navbar-default">
+            <!--header-one-->
             <div class="container">
-                <div class="col-md-12">
-                    <p class="pull-left">&copy; 2017. Meri Kitab</p>
-                    <p class="pull-right">Developed by :<a href="https://bootstrapious.com">Prateek Singh</a>
-                        <!-- Not removing these links is part of the license conditions of the template. Thanks for understanding :) If you want to use the template without the attribution links, you can do so after supporting further themes development at https://bootstrapious.com/donate  -->
-                    </p>
-
+                <div class="nav navbar-nav wow fadeInLeft animated" data-wow-delay=".5s">
+                    <p>Welcome to Meri Kitab <a href="">Register </a> Or <a href="">Sign In </a></p>
+                </div>
+                <div class="nav navbar-nav navbar-right social-icons wow fadeInRight animated" data-wow-delay=".5s">
+                    <ul>
+                        <li>
+                            <a href="https://www.facebook.com/merikitab.in"> </a>
+                        </li>
+                        <li>
+                            <a href="#" class="pin"> </a>
+                        </li>
+                        <li>
+                            <a href="#" class="in"> </a>
+                        </li>
+                        <li>
+                            <a href="#" class="be"> </a>
+                        </li>
+                        <li>
+                            <a href="#" class="you"> </a>
+                        </li>
+                        <li>
+                            <a href="#" class="vimeo"> </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+        <div class="header-two navbar navbar-default">
+            <!--header-two-->
+            <div class="container">
+                <div class="nav navbar-nav header-two-left">
+                    <ul>
+                        <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+91 8527696059</li>
+                        <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:info@example.com">shiv@merikitab.com</a></li>
+                    </ul>
+                </div>
+                <div class="nav navbar-nav logo wow zoomIn animated" data-wow-delay=".7s">
+                    <img src="img/logo.png" alt="Universal logo" class="hidden-xs hidden-sm">
+                </div>
+                <div class="nav navbar-nav navbar-right header-two-right">
+                    <div class="header-right my-account">
+                        <a href=""><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> CONTACT US</a>
+                    </div>
+                    <div class="header-right cart">
+                        <a href="#"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
+                        <h4>
+                            <a href="">
+                                <span class="simpleCart_total">0.00 </span> (<span id="simpleCart_quantity" class="simpleCart_quantity"> 0 </span>)
+                            </a>
+                        </h4>
+                        <div class="cart-box">
+                            <p><a href="javascript:;" class="simpleCart_empty">Empty cart</a></p>
+                            <div class="clearfix"> </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+        <div class="top-nav navbar navbar-default">
+            <!--header-three-->
+            <div class="container">
+                <nav class="navbar" role="navigation">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+                    </div>
+                    <!--navbar-header-->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav top-nav-info">
+                            <li><a href="" class="active">Home</a></li>
+                            <li>
+                                <a href="">Book</a>
+                            </li>
+                            <li>
+                                <a href="">School</a>
+                            </li>
+                            <li>
+                                <a href="">Special Offers</a>
+                            </li>
+                            <li>
+                                <a href="">Partners</a>
+                            </li>
+                            <li>
+                                <a href="">School Kit App</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--//navbar-header-->
+                </nav>
+                <div id="cd-search" class="cd-search">
+                    <form>
+                        <input type="search" placeholder="Search...">
+                    </form>
                 </div>
             </div>
         </div>
-        <!-- /#copyright -->
-        <!-- *** COPYRIGHT END *** -->
     </div>
-    <!--end of all div-->
+
+    <div ng-view></div>
+
+
+    <div class="footer">
+        <div class="container">
+            <div class="footer-info">
+                <div class="col-md-4 footer-grids wow fadeInUp animated" data-wow-delay=".5s">
+                    <h4 class="footer-logo"><a href="">Meri <b>Kitab</b> <span class="tag">Online Text Book Store</span> </a></h4>
+                    <p>© 2016 Meri Kitab . All rights reserved | Design by <a href="" target="_blank">Prateek Singh</a></p>
+                </div>
+                <div class="col-md-4 footer-grids wow fadeInUp animated" data-wow-delay=".7s">
+                    <h3>Popular</h3>
+                    <ul>
+                        <li><a href="">About Us</a></li>
+                        <li><a href="">new</a></li>
+                        <li><a href="">Contact Us</a></li>
+                        <li><a href="">FAQ</a></li>
+                        <li><a href="">Wishlist</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 footer-grids wow fadeInUp animated" data-wow-delay=".9s">
+                    <h3>Subscribe</h3>
+                    <p>Sign Up Now For More Information <br> About Our Company </p>
+                    <form>
+                        <input type="text" placeholder="Enter Your Email" required="">
+                        <input type="submit" value="Go">
+                    </form>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <script src="js/main.js"></script>
+    <!--//search jQuery-->
+    <!--smooth-scrolling-of-move-up-->
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var defaults = {
+                containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear'
+            };
+
+            $().UItoTop({
+                easingType: 'easeOutQuart'
+            });
+
+        });
+    </script>
+    <script src="js/bootstrap.js"></script>
+
     <!-- #### JAVASCRIPT FILES ### -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script>

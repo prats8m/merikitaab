@@ -45,8 +45,9 @@
                                     <input type="checkbox" ng-model="filter.classes[data.class_id]" /> {{data.class_name}}<br>
                                     </label>
                                 </div>
+                                <a class="btn btn-xs btn-info" ng-show="classFilterButtonStatus" ng-click="listClassFilter(classFilterButtonValue)"><span class="hidden-sm">{{classFilterButtonName}}</span></a>
                             </div>
-                            <input type="submit" class="btn btn-default btn-sm btn-template-main" value ="Apply">
+                            <input type="submit" class="btn btn-default btn-sm btn-template-main" value="Apply">
                         </form>
                     </div>
                 </div>
@@ -66,8 +67,9 @@
                                         <input type="checkbox" ng-model="filter.school[data.school_id]" >{{data.school_name}}
                                     </label>
                                 </div>
-                                </div>
-                            <input type="submit" class="btn btn-default btn-sm btn-template-main" value ="Apply">
+                                <a class="btn btn-xs btn-info" ng-show="schoolFilterButtonStatus" ng-click="listSchoolFilter(schoolFilterButtonValue)"><span class="hidden-sm">{{schoolFilterButtonName}}</span></a>
+                            </div>
+                            <input type="submit" class="btn btn-default btn-sm btn-template-main" value="Apply">
                         </form>
                     </div>
                     <!--school filter end-->
@@ -78,7 +80,7 @@
                 <div class="panel panel-default sidebar-menu">
                     <div class="panel-heading">
                         <h3 class="panel-title">Type</h3>
-                        <a class="btn btn-xs btn-danger pull-right" href="#"><i class="fa fa-times-circle"></i> <span class="hidden-sm">Clear</span></a>
+                        <!--<a class="btn btn-xs btn-danger pull-right" href="#"><i class="fa fa-times-circle"></i> <span class="hidden-sm">Clear</span></a>-->
                     </div>
 
                     <div class="panel-body">
@@ -90,8 +92,10 @@
                                         <input type="checkbox" ng-model="filter.bookType[data.bt_id]">{{data.bt_name}}
                                     </label>
                                 </div>
-                                </div>
-                            <input type="submit" class="btn btn-default btn-sm btn-template-main" value ="Apply">
+                                <a class="btn btn-xs btn-info" ng-show="bookTypeFilterButtonStatus" ng-click="listBookTypeFilter(bookTypeFilterButtonValue)"><span class="hidden-sm">{{bookTypeFilterButtonName}}</span></a>
+
+                            </div>
+                            <input type="submit" class="btn btn-default btn-sm btn-template-main" value="Apply">
                         </form>
                     </div>
                 </div>
@@ -112,8 +116,10 @@
                                         <input type="checkbox" ng-model="filter.author[data.author_id]">{{data.author_name}}
                                     </label>
                                 </div>
+                                <a class="btn btn-xs btn-info" ng-show="authorFilterButtonStatus" ng-click="listAuthorFilter(authorFilterButtonValue)"><span class="hidden-sm">{{authorFilterButtonName}}</span></a>
+
                             </div>
-                            <input type="submit" class="btn btn-default btn-sm btn-template-main" value ="Apply">
+                            <input type="submit" class="btn btn-default btn-sm btn-template-main" value="Apply">
                         </form>
 
                     </div>
@@ -138,7 +144,9 @@
                     <div class="col-sm-6 col-md-3" ng-repeat="book in booksData">
                         <div class="box-image">
                             <div class="image">
-                                <img src="img/product1.jpg" alt="" class="img-responsive">
+                                <img src="img/product1.jpg"  alt="" class="img-responsive" ng-hide="book.book_pic">
+                                <img src="{{book.book_pic}}"  alt="" class="img-responsive" ng-show="book.book_pic">
+
                             </div>
                             <div class="bg"></div>
                             <div class="name">
@@ -152,7 +160,7 @@
                                 </p>
                             </div>
                             <h3>{{book.book_name}}</h3>
-                            Class : {{book.book_class}} <br> By : {{book.book_author}}
+                            Class : {{book.class_name}} <br> By : {{book.author_name}}
                         </div>
                         <!-- /.box-image -->
 

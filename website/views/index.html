@@ -1,282 +1,342 @@
-<section>
-    <!-- *** HOMEPAGE CAROUSEL ***
- _________________________________________________________ -->
-    <br>
-    <div class="container">
-        <div id="myCarousel" class="carousel slide" data-ride="carousel">
-            <!-- Indicators -->
-            <ol class="carousel-indicators">
-                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                <li data-target="#myCarousel" data-slide-to="1"></li>
-                <li data-target="#myCarousel" data-slide-to="2"></li>
-            </ol>
+	<!--//header-->
+	<!--banner-->
+	<div class="banner">
+		<div class="container">
+			<div class="banner-text">			
+				<div class="col-sm-5 banner-left wow fadeInLeft animated" data-wow-delay=".5s">			
+					<h2>On Entire Book range</h2>
+					<h3>Coming Soon </h3>
+					<!--<h4>Our New Designs</h4>-->
+					<div class="count main-row">
+						<ul id="example">
+							<li><span class="hours">00</span><p class="hours_text">Hours</p></li>
+							<li><span class="minutes">00</span><p class="minutes_text">Minutes</p></li>
+							<li><span class="seconds">00</span><p class="seconds_text">Seconds</p></li>
+						</ul>
+							<div class="clearfix"> </div>
+							<script type="text/javascript" src="js/jquery.countdown.min.js"></script>
+							<script type="text/javascript">
+								$('#example').countdown({
+									date: '12/24/2020 15:59:59',
+									offset: -8,
+									day: 'Day',
+									days: 'Days'
+								}, function () {
+									alert('Done!');
+								});
+							</script>
+					</div>
 
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner">
+				</div>
+				<div class="col-sm-7 banner-right wow fadeInRight animated" data-wow-delay=".5s">			
+					<section class="slider grid">
+						<div class="flexslider">
+							<ul class="slides">
+								<li>
+									<h2 style="color:black;">Join us & get <span>FREE</span> Cloud School Management Software </h2>
+									<!--<img src="./img/ms1.jpg" alt="">-->
+								</li>
+								<li>
+									<h2 style="color:black;">Online Attendence,Online Result,Online Fee Submission....</h2>
+									<!--<img src="./img/ms2.jpg" alt="">-->
+								</li>
+								<li>
+									<h2 style="color:black;">Bulk SMS,Chatting & lots more... :)</h2>
+									<!--<img src="./img/ms3.png" alt="">-->
+								</li>
+							</ul>
+						</div>
+					</section>
+					<!--FlexSlider-->
+					<script defer src="js/jquery.flexslider.js"></script>
+					<script type="text/javascript">
+						$(window).load(function(){
+						  $('.flexslider').flexslider({
+							animation: "pagination",
+							start: function(slider){
+							  $('body').removeClass('loading');
+							}
+						  });
+						});
+					</script>
+					<!--End-slider-script-->
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>			
+	<!--//banner-->
+	<!--new-->
+	<div class="new">
+		<div class="container">
+			<div class="title-info wow fadeInUp animated" data-wow-delay=".5s">
+				<h3 class="title">New <span>Arrivals</span></h3>
+				<p>You can find latest Books on your Door step. </p>
+			</div>
+			<div class="new-info">
+				<div class="col-md-3 new-grid simpleCart_shelfItem wow flipInY animated" data-wow-delay=".5s">
+					<div class="new-top">
+						<a href=""><img src="./img/ms1.jpg" class="img-responsive" alt=""/></a>
+						<div class="new-text">
+							<ul>
+								<li><a class="item_add" href=""> Add to cart</a></li>
+								<li><a href="">Quick View </a></li>
+								<li><a href="">Show Details </a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="new-bottom">
+						<h5><a class="name" href="">Magic Mental Maths</a></h5>
+						<div class="rating">
+							<span class="on">☆</span>
+							<span class="on">☆</span>
+							<span class="on">☆</span>
+							<span class="on">☆</span>
+							<span>☆</span>
+						</div>	
+						<div class="ofr">
+							<p class="pric1"><del>2000.00</del></p>
+							<p><span class="item_price">500.00</span></p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 new-grid new-mdl simpleCart_shelfItem wow flipInY animated" data-wow-delay=".7s">
+					<div class="new-top">
+						<a href=""><img src="./img/ms2.jpg" class="img-responsive" alt=""/></a>
+						<div class="new-text">
+							<ul>
+								<li><a class="item_add" href=""> Add to cart</a></li>
+								<li><a href="">Quick View </a></li>
+								<li><a href="">Show Details </a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="new-bottom">
+						<h5><a class="name" href="">Moby Dick</a></h5>
+						<div class="rating">
+							<span class="on">☆</span>
+							<span class="on">☆</span>
+							<span class="on">☆</span>
+							<span class="on">☆</span>
+							<span>☆</span>
+						</div>	
+						<div class="ofr">
+							<p><span class="item_price">50.00</span></p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 new-grid new-mdl1 simpleCart_shelfItem wow flipInY animated" data-wow-delay=".9s">
+					<div class="new-top">
+						<a href=""><img src="./img/ms3.png" class="img-responsive" alt=""/></a>
+						<div class="new-text">
+							<ul>
+								<li><a class="item_add" href=""> Add to cart</a></li>
+								<li><a href="">Quick View </a></li>
+								<li><a href="">Show Details </a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="new-bottom">
+						<h5><a class="name" href="">Biology </a></h5>
+						<div class="rating">
+							<span class="on">☆</span>
+							<span class="on">☆</span>
+							<span class="on">☆</span>
+							<span class="on">☆</span>
+							<span>☆</span>
+						</div>	
+						<div class="ofr">
+							<p><span class="item_price">150.00</span></p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 new-grid simpleCart_shelfItem wow flipInY animated" data-wow-delay="1.1s">
+					<div class="new-top">
+						<a href=""><img src="./img/ms4.jpg" class="img-responsive" alt=""/></a>
+						<div class="new-text">
+							<ul>
+								<li><a class="item_add" href=""> Add to cart</a></li>
+								<li><a href="">Quick View </a></li>
+								<li><a href="">Show Details </a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="new-bottom">
+						<h5><a class="name" href="">Love is two people? <talking></talking></a></h5>
+						<div class="rating">
+							<span class="on">☆</span>
+							<span class="on">☆</span>
+							<span class="on">☆</span>
+							<span class="on">☆</span>
+							<span>☆</span>
+						</div>	
+						<div class="ofr">
+							<p class="pric1"><del>5050.00</del></p>
+							<p><span class="item_price">3020.00</span></p>
+						</div>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>		
+	<!--//new-->
+	<!--gallery-->
+	<div class="gallery">
+		<div class="container">
+			<div class="title-info wow fadeInUp animated" data-wow-delay=".5s">
+				<h3 class="title">Popular<span> Books</span></h3>
+				<p>Must read books recomended by our AI</p>
+			</div>
+			<div class="gallery-info">
+				<div class="col-md-3 gallery-grid wow flipInY animated" data-wow-delay=".5s">
+					<a href=""><img src="./img/mp1.jpg" class="img-responsive" alt=""/></a>
+					<div class="gallery-text simpleCart_shelfItem">
+						<h5><a class="name" href="">The Law Book</a></h5>
+						<p><span class="item_price">100 Rs</span></p>
+						 
+						<ul>
+							<li><a  href=""><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></a></li>
+							<li><a class="item_add"  href=""><span class="glyphicon glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></li>
+							<li><a  href=""><span class="glyphicon glyphicon glyphicon-heart-empty" aria-hidden="true"></span></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-3 gallery-grid gallery-grid1 wow flipInY animated" data-wow-delay=".7s">
+					<a href=""><img src="./img/mp2.jpg" class="img-responsive" alt=""/></a>
+					<div class="gallery-text simpleCart_shelfItem">
+						<h5><a class="name" href="">My learned friend</a></h5>
+						<p><span class="item_price">79 Rs</span></p>
+						 
+						<ul>
+							<li><a  href=""><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></a></li>
+							<li><a class="item_add"  href=""><span class="glyphicon glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></li>
+							<li><a  href=""><span class="glyphicon glyphicon glyphicon-heart-empty" aria-hidden="true"></span></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-3 gallery-grid gallery-grid2 wow flipInY animated" data-wow-delay=".9s">
+					<a href=""><img src="./img/mp3.jpg" class="img-responsive" alt=""/></a>
+					<div class="gallery-text simpleCart_shelfItem">
+						<h5><a class="name" href="">Buisness Law Now!</a></h5>
+						<p><span class="item_price">30 Rs</span></p>
+						 
+						<ul>
+							<li><a  href=""><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></a></li>
+							<li><a class="item_add"  href=""><span class="glyphicon glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></li>
+							<li><a  href=""><span class="glyphicon glyphicon glyphicon-heart-empty" aria-hidden="true"></span></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-3 gallery-grid wow flipInY animated" data-wow-delay="1.1s">
+					<a href=""><img src="./img/mp4.jpg" class="img-responsive" alt=""/></a>
+					<div class="gallery-text simpleCart_shelfItem">
+						<h5><a class="name" href="">The Big Lie</a></h5>
+						<p><span class="item_price">15 Rs</span></p>
+						 
+						<ul>
+							<li><a  href=""><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></a></li>
+							<li><a class="item_add"  href=""><span class="glyphicon glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></li>
+							<li><a  href=""><span class="glyphicon glyphicon glyphicon-heart-empty" aria-hidden="true"></span></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-3 gallery-grid wow flipInY animated" data-wow-delay=".5s">
+					<a href=""><img src="./img/mp5.jpg" class="img-responsive" alt=""/></a>
+					<div class="gallery-text simpleCart_shelfItem">
+						<h5><a class="name" href="">Fiction</a></h5>
+						<p><span class="item_price">60 Rs</span></p>
+						 
+						<ul>
+							<li><a  href=""><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></a></li>
+							<li><a class="item_add"  href=""><span class="glyphicon glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></li>
+							<li><a  href=""><span class="glyphicon glyphicon glyphicon-heart-empty" aria-hidden="true"></span></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-3 gallery-grid gallery-grid1 wow flipInY animated" data-wow-delay=".7s">
+					<a href=""><img src="./img/mp6.jpg" class="img-responsive" alt=""/></a>
+					<div class="gallery-text simpleCart_shelfItem">
+						<h5><a class="name" href="">Royal Dragon</a></h5>
+						<p><span class="item_price">80 Rs</span></p>
+						 
+						<ul>
+							<li><a  href=""><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></a></li>
+							<li><a class="item_add"  href=""><span class="glyphicon glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></li>
+							<li><a  href=""><span class="glyphicon glyphicon glyphicon-heart-empty" aria-hidden="true"></span></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-3 gallery-grid gallery-grid2 wow flipInY animated" data-wow-delay=".9s">
+					<a href=""><img src="./img/mp7.jpg" class="img-responsive" alt=""/></a>
+					<div class="gallery-text simpleCart_shelfItem">
+						<h5><a class="name" href="">A feast for crows</a></h5>
+						<p><span class="item_price">110 Rs</span></p>
+						 
+						<ul>
+							<li><a  href=""><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></a></li>
+							<li><a class="item_add"  href=""><span class="glyphicon glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></li>
+							<li><a  href=""><span class="glyphicon glyphicon glyphicon-heart-empty" aria-hidden="true"></span></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-3 gallery-grid wow flipInY animated" data-wow-delay="1.1s">
+					<a href=""><img src="./img/mp8.jpg" class="img-responsive" alt=""/></a>
+					<div class="gallery-text simpleCart_shelfItem">
+						<h5><a class="name" href="">The Physics Book</a></h5>
+						<p><span class="item_price">300 Rs</span></p>
+						 
+						<ul>
+							<li><a  href=""><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></a></li>
+							<li><a class="item_add"  href=""><span class="glyphicon glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></li>
+							<li><a  href=""><span class="glyphicon glyphicon glyphicon-heart-empty" aria-hidden="true"></span></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+	<!--//gallery-->
+	<!--trend-->
+	<div class="trend wow zoomIn animated" data-wow-delay=".5s">
+		<div class="container">
+			<div class="trend-info">
+				<section class="slider grid">
+					<div class="flexslider trend-slider">
+						<ul class="slides">
+							<li>
+								<div class="col-md-5 trend-left">
+									<img src="./img/person-1.jpg" alt=""/>
+								</div>
+								<div class="col-md-7 trend-right">
+									<h5>Shiv Kumar Sharma </h5>
+									<h4>CEO & Founder</h4>
+									<p>You can't just ask customers what they want and then try to give that to them. By the time
+                                    you get it built, they'll want something new.</p>
+								</div>
+								<div class="clearfix"></div>
+							</li>
+							<li>
+								<div class="col-md-5 trend-left">
+									<img src="./img/person-2.jpg" alt=""/>
+								</div>
+								<div class="col-md-7 trend-right">
+									<h5>Prateek Singh </h5>
+									<h4>CTO & Co-founder</h4>
+									<p>You cant write your destiny, but you can write Codes. So do it !</p>
+								</div>
+								<div class="clearfix"></div>
+							</li>
+						</ul>
+					</div>
+				</section>
+			</div>
+		</div>
+	</div>
 
-                <div class="item active">
-                    <img src="img/main-slider1.jpg" alt="Los Angeles" style="width:100%;">
-                    <div class="carousel-caption">
-                        <h3>Meri Kitab</h3>
-                        <p>Education is the most powerful weapon which you can use to change the world.</p>
-                    </div>
-                </div>
 
-                <div class="item">
-                    <img src="img/main-slider2.jpg" alt="Chicago" style="width:100%;">
-                    <div class="carousel-caption">
-                        <h3>Meri Kitab</h3>
-                        <p>A person who won't read has no advantage over one who can't read.</p>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <img src="img/main-slider3.jpg" alt="New York" style="width:100%;">
-                    <div class="carousel-caption">
-                        <h3>Meri Kitab</h3>
-                        <p style="color:black;">Education is not preparation for life; education is life itself.</p>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- Left and right controls -->
-            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#myCarousel" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
-    </div>
-
-    <!-- *** HOMEPAGE CAROUSEL END *** -->
-</section>
-
-<section class="bar background-white no-mb">
-    <div class="container">
-
-        <div class="col-md-12">
-            <div class="heading text-center">
-                <h2>Meri Kitaab Special</h2>
-            </div>
-
-            <p class="lead">Here are some books on discount we recommend you to buy!!!
-                <span class="accent">Hurry Offer available for limited time!</span>
-            </p>
-
-            <!-- *** BLOG HOMEPAGE ***
-_________________________________________________________ -->
-
-            <div class="row">
-                <div class="col-md-3 col-sm-6">
-                    <div class="box-image-text blog">
-                        <div class="top">
-                            <div class="image">
-                                <img src="img/main_page1.jpg" alt="" class="img-responsive">
-                            </div>
-                            <div class="bg"></div>
-                            <div class="text">
-                                <p class="buttons">
-                                    <a href="" class="btn btn-template-transparent-primary"><i class="fa fa-link"></i> Read more</a>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="content">
-                            <h4><a href="">Fashion now</a></h4>
-                            <p class="author-category">By <a href="#">John Snow</a> in <a href="">Webdesign</a>
-                            </p>
-                            <p class="intro">Fifth abundantly made Give sixth hath. Cattle creature i be don't them behold green moved fowl
-                                Moved life us beast good yielding. Have bring.</p>
-                            <p class="read-more"><a href="" class="btn btn-template-main">Continue reading</a>
-                            </p>
-                        </div>
-                    </div>
-                    <!-- /.box-image-text -->
-
-                </div>
-
-                <div class="col-md-3 col-sm-6">
-                    <div class="box-image-text blog">
-                        <div class="top">
-                            <div class="image">
-                                <img src="img/main_page2.png" alt="" class="img-responsive">
-                            </div>
-                            <div class="bg"></div>
-                            <div class="text">
-                                <p class="buttons">
-                                    <a href="" class="btn btn-template-transparent-primary"><i class="fa fa-link"></i> Read more</a>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="content">
-                            <h4><a href="">Fashion now</a></h4>
-                            <p class="author-category">By <a href="#">John Snow</a> in <a href="">Webdesign</a>
-                            </p>
-                            <p class="intro">Fifth abundantly made Give sixth hath. Cattle creature i be don't them behold green moved fowl
-                                Moved life us beast good yielding. Have bring.</p>
-                            <p class="read-more"><a href="" class="btn btn-template-main">Continue reading</a>
-                            </p>
-                        </div>
-                    </div>
-                    <!-- /.box-image-text -->
-
-                </div>
-
-                <div class="col-md-3 col-sm-6">
-                    <div class="box-image-text blog">
-                        <div class="top">
-                            <div class="image">
-                                <img src="img/main_page3.jpg" alt="" class="img-responsive">
-                            </div>
-                            <div class="bg"></div>
-                            <div class="text">
-                                <p class="buttons">
-                                    <a href="" class="btn btn-template-transparent-primary"><i class="fa fa-link"></i> Read more</a>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="content">
-                            <h4><a href="">What to do</a></h4>
-                            <p class="author-category">By <a href="#">John Snow</a> in <a href="">Webdesign</a>
-                            </p>
-                            <p class="intro">Fifth abundantly made Give sixth hath. Cattle creature i be don't them behold green moved fowl
-                                Moved life us beast good yielding. Have bring.</p>
-                            <p class="read-more"><a href="" class="btn btn-template-main">Continue reading</a>
-                            </p>
-                        </div>
-                    </div>
-                    <!-- /.box-image-text -->
-
-                </div>
-
-                <div class="col-md-3 col-sm-6">
-                    <div class="box-image-text blog">
-                        <div class="top">
-                            <div class="image">
-                                <img src="img/main_page4.jpg" alt="" class="img-responsive">
-                            </div>
-                            <div class="bg"></div>
-                            <div class="text">
-                                <p class="buttons">
-                                    <a href="" class="btn btn-template-transparent-primary"><i class="fa fa-link"></i> Read more</a>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="content">
-                            <h4><a href="">5 ways to look awesome</a></h4>
-                            <p class="author-category">By <a href="#">John Snow</a> in <a href="">Webdesign</a>
-                            </p>
-                            <p class="intro">Am terminated it excellence invitation projection as. She graceful shy believed distance use
-                                nay. Lively is people.</p>
-                            <p class="read-more"><a href="" class="btn btn-template-main">Continue reading</a>
-                            </p>
-                        </div>
-                    </div>
-                    <!-- /.box-image-text -->
-
-                </div>
-
-            </div>
-            <!-- /.row -->
-
-            <!-- *** BLOG HOMEPAGE END *** -->
-
-        </div>
-
-    </div>
-    <!-- /.container -->
-</section>
-<!-- /.bar -->
-
-<section class="bar background-pentagon no-mb">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="heading text-center">
-                    <h2>Our Vision</h2>
-                </div>
-
-                <p class="lead">We have worked with many clients and we always want to deliver our best. Meri Kitab is a place where you
-                    can get your school text book by just few clicks at you home.We want to lead india in Education system
-                    and make books available to every student in our future
-                    <palns class=""></palns>
-                </p>
-
-
-                <!-- *** TESTIMONIALS CAROUSEL ***
- _________________________________________________________ -->
-
-                <ul class="owl-carousel testimonials same-height-row">
-                    <li class="item">
-                        <div class="testimonial same-height-always">
-                            <div class="text">
-                                <p>You can't just ask customers what they want and then try to give that to them. By the time
-                                    you get it built, they'll want something new. </p>
-                            </div>
-                            <div class="bottom">
-                                <div class="icon"><i class="fa fa-quote-left"></i>
-                                </div>
-                                <div class="name-picture">
-                                    <img class="" alt="" src="img/person-1.jpg">
-                                    <h5>Shiv Kumar Sharma</h5>
-                                    <p>CEO & Founder</p>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="item">
-                        <div class="testimonial same-height-always">
-                            <div class="text">
-                                <p>You cant write your destiny, but you can write Codes. So do it !</p>
-                            </div>
-                            <div class="bottom">
-                                <div class="icon"><i class="fa fa-quote-left"></i>
-                                </div>
-                                <div class="name-picture">
-                                    <img class="" alt="" src="img/person-2.jpg">
-                                    <h5>Prateek Singh</h5>
-                                    <p>CTO & Co-founder</p>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-
-                </ul>
-                <!-- /.owl-carousel -->
-
-                <!-- *** TESTIMONIALS CAROUSEL END *** -->
-            </div>
-
-        </div>
-    </div>
-</section>
-<!-- /.bar -->
-
-
-
-<section class="bar background-image-fixed-2 no-mb color-white text-center">
-    <div class="dark-mask"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="icon icon-lg"><i class="fa fa-file-code-o"></i>
-                </div>
-                <h3 class="text-uppercase">Do you want to Explore more?</h3>
-                <p class="lead">We have so much for you to explores all kinds of books. You can shop by school or shop by Book</p>
-                <p class="text-center">
-                    <a href="http://www.fb.com/merikitab.in" class="btn btn-template-transparent-black btn-lg">Check out our fb page</a>
-                </p>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-
-<div class="col-md-12 ">
+	<div class="col-md-12 ">
     <div class="panel panel-primary">
         <div class="panel-heading">
             <h3 class="panel-title">Our Publishers & Clinets</h3>
@@ -288,19 +348,19 @@ _________________________________________________________ -->
                     <div class="item active">
                         <div class="col-md-12">
                             <div class="col-md-4 profile">
-                                <a class="thumbnail" href="#"><img src="img/c1.jpg" alt="">
+                                <a class="thumbnail"  href=""><img src="img/c1.jpg" alt="">
                                     <!--<h5>John doe</h5>
                                     <p>CEO</p>-->
                                 </a>
                             </div>
                             <div class="col-md-4 profile">
-                                <a class="thumbnail" href="#"><img src="img/c2.jpg" alt="">
+                                <a class="thumbnail"  href=""><img src="img/c2.jpg" alt="">
                                     <!--<h5>Milan kumar panigrahi</h5>
                                     <p>Software Developer</p>-->
                                 </a>
                             </div>
                             <div class="col-md-4 profile">
-                                <a class="thumbnail" href="#"><img src="img/c3.jpg" alt="">
+                                <a class="thumbnail"  href=""><img src="img/c3.jpg" alt="">
                                     <!--<h5>Satyaban Rath</h5>
                                     <p>Software Developer</p>-->
                                 </a>
@@ -308,19 +368,19 @@ _________________________________________________________ -->
                         </div>
                         <div class="col-md-12">
                             <div class="col-md-4 profile">
-                                <a class="thumbnail" href="#"><img src="img/c4.jfif" alt="">
+                                <a class="thumbnail"  href=""><img src="img/c4.png" alt="">
                                     <!--<h5>Pragyan Patra</h5>
                                     <p>Manager</p>-->
                                 </a>
                             </div>
                             <div class="col-md-4 profile">
-                                <a class="thumbnail" href="#"><img src="img/c5.png" alt="">
+                                <a class="thumbnail"  href=""><img src="img/c5.png" alt="">
                                     <!--<h5>Barsa amirta Guru</h5>
                                     <p>Web Designer</p>-->
                                 </a>
                             </div>
                             <div class="col-md-4 profile">
-                                <a class="thumbnail" href="#"><img src="img/c6.jfif" alt="">
+                                <a class="thumbnail"  href=""><img src="img/c6.png" alt="">
                                     <!--<h5>Nisitha Mohanty</h5>
                                     <p>Software Developer</p>-->
                                 </a>
@@ -330,19 +390,19 @@ _________________________________________________________ -->
                     <div class="item">
                         <div class="col-md-12">
                             <div class="col-md-4 profile">
-                                <a class="thumbnail" href="#"><img src="img/c7.png" alt="">
+                                <a class="thumbnail"  href=""><img src="img/c7.png" alt="">
                                     <!--<h5>Gyana Ranjan Patra</h5>
                                     <p>Project lead</p>-->
                                 </a>
                             </div>
                             <div class="col-md-4 profile">
-                                <a class="thumbnail" href="#"><img src="img/c8.jfif" alt="">
+                                <a class="thumbnail"  href=""><img src="img/c8.png" alt="">
                                     <!--<h5>Lipsa Patra</h5>
                                     <p>Software Developer</p>-->
                                 </a>
                             </div>
                             <div class="col-md-4 profile">
-                                <a class="thumbnail" href="#"><img src="img/c9.png" alt="">
+                                <a class="thumbnail"  href=""><img src="img/c9.png" alt="">
                                     <!--<h5>Divya Ramachandra</h5>
                                     <p>Software Developer</p>-->
                                 </a>
@@ -350,19 +410,19 @@ _________________________________________________________ -->
                         </div>
                         <div class="col-md-12">
                             <div class="col-md-4 profile">
-                                <a class="thumbnail" href="#"><img src="img/c10.jfif" alt="">
+                                <a class="thumbnail"  href=""><img src="img/c10.png" alt="">
                                     <!--<h5>Neha padhee</h5>
                                     <p>Software Developer</p>-->
                                 </a>
                             </div>
                             <div class="col-md-4 profile">
-                                <a class="thumbnail" href="#"><img src="img/c11.jfif" alt="">
+                                <a class="thumbnail"  href=""><img src="img/c11.png" alt="">
                                     <!--<h5>abc</h5>
                                     <p>Sales manager</p>-->
                                 </a>
                             </div>
                             <div class="col-md-4 profile">
-                                <a class="thumbnail" href="#"><img src="img/c12.jfif" alt="">
+                                <a class="thumbnail"  href=""><img src="img/c12.png" alt="">
                                     <!--<h5>xyz</h5>
                                     <p>HR manager</p>-->
                                 </a>
@@ -372,19 +432,19 @@ _________________________________________________________ -->
                     <div class="item">
                         <div class="col-md-12">
                             <div class="col-md-4 profile">
-                                <a class="thumbnail" href="#"><img src="img/c13.jfif" alt="">
+                                <a class="thumbnail"  href=""><img src="img/c13.png" alt="">
                                     <!--<h5>Gyana Ranjan Patra</h5>
                                     <p>Project lead</p>-->
                                 </a>
                             </div>
                             <div class="col-md-4 profile">
-                                <a class="thumbnail" href="#"><img src="img/c14.jfif" alt="">
+                                <a class="thumbnail"  href=""><img src="img/c14.png" alt="">
                                     <!--<h5>Lipsa Patra</h5>
                                     <p>Software Developer</p>-->
                                 </a>
                             </div>
                             <div class="col-md-4 profile">
-                                <a class="thumbnail" href="#"><img src="img/c15.jfif" alt="">
+                                <a class="thumbnail"  href=""><img src="img/c15.png" alt="">
                                     <!--<h5>Divya Ramachandra</h5>
                                     <p>Software Developer</p>-->
                                 </a>
@@ -392,19 +452,19 @@ _________________________________________________________ -->
                         </div>
                         <div class="col-md-12">
                             <div class="col-md-4 profile">
-                                <a class="thumbnail" href="#"><img src="img/c16.jfif" alt="">
+                                <a class="thumbnail"  href=""><img src="img/c16.png" alt="">
                                     <!--<h5>Neha padhee</h5>
                                     <p>Software Developer</p>-->
                                 </a>
                             </div>
                             <div class="col-md-4 profile">
-                                <a class="thumbnail" href="#"><img src="img/c17.jfif" alt="">
+                                <a class="thumbnail"  href=""><img src="img/c17.png" alt="">
                                     <!--<h5>abc</h5>
                                     <p>Sales manager</p>-->
                                 </a>
                             </div>
                             <div class="col-md-4 profile">
-                                <a class="thumbnail" href="#"><img src="img/c18.jfif" alt="">
+                                <a class="thumbnail"  href=""><img src="img/c18.png" alt="">
                                     <!--<h5>xyz</h5>
                                     <p>HR manager</p>-->
                                 </a>
@@ -414,19 +474,19 @@ _________________________________________________________ -->
                     <div class="item">
                         <div class="col-md-12">
                             <div class="col-md-4 profile">
-                                <a class="thumbnail" href="#"><img src="img/c19.jfif" alt="">
+                                <a class="thumbnail"  href=""><img src="img/c19.png" alt="">
                                     <!--<h5>Gyana Ranjan Patra</h5>
                                     <p>Project lead</p>-->
                                 </a>
                             </div>
                             <div class="col-md-4 profile">
-                                <a class="thumbnail" href="#"><img src="img/c20.png" alt="">
+                                <a class="thumbnail"  href=""><img src="img/c20.png" alt="">
                                     <!--<h5>Lipsa Patra</h5>
                                     <p>Software Developer</p>-->
                                 </a>
                             </div>
                             <div class="col-md-4 profile">
-                                <a class="thumbnail" href="#"><img src="img/c21.jfif" alt="">
+                                <a class="thumbnail"  href=""><img src="img/c21.png" alt="">
                                     <!--<h5>Divya Ramachandra</h5>
                                     <p>Software Developer</p>-->
                                 </a>
@@ -434,19 +494,19 @@ _________________________________________________________ -->
                         </div>
                         <div class="col-md-12">
                             <div class="col-md-4 profile">
-                                <a class="thumbnail" href="#"><img src="img/c22.jfif" alt="">
+                                <a class="thumbnail"  href=""><img src="img/c22.png" alt="">
                                     <!--<h5>Neha padhee</h5>
                                     <p>Software Developer</p>-->
                                 </a>
                             </div>
                             <div class="col-md-4 profile">
-                                <a class="thumbnail" href="#"><img src="img/c23.jfif" alt="">
+                                <a class="thumbnail"  href=""><img src="img/c23.png" alt="">
                                     <!--<h5>abc</h5>
                                     <p>Sales manager</p>-->
                                 </a>
                             </div>
                             <div class="col-md-4 profile">
-                                <a class="thumbnail" href="#"><img src="img/c24.jfif" alt="">
+                                <a class="thumbnail"  href=""><img src="img/c24.png" alt="">
                                     <!--<h5>xyz</h5>
                                     <p>HR manager</p>-->
                                 </a>
@@ -456,19 +516,19 @@ _________________________________________________________ -->
                     <div class="item">
                         <div class="col-md-12">
                             <div class="col-md-4 profile">
-                                <a class="thumbnail" href="#"><img src="img/c25.jfif" alt="">
+                                <a class="thumbnail"  href=""><img src="img/c25.png" alt="">
                                     <!--<h5>Gyana Ranjan Patra</h5>
                                     <p>Project lead</p>-->
                                 </a>
                             </div>
                             <div class="col-md-4 profile">
-                                <a class="thumbnail" href="#"><img src="img/c26.png" alt="">
+                                <a class="thumbnail"  href=""><img src="img/c26.png" alt="">
                                     <!--<h5>Lipsa Patra</h5>
                                     <p>Software Developer</p>-->
                                 </a>
                             </div>
                             <div class="col-md-4 profile">
-                                <a class="thumbnail" href="#"><img src="img/c27.png" alt="">
+                                <a class="thumbnail"  href=""><img src="img/c27.png" alt="">
                                     <!--<h5>Divya Ramachandra</h5>
                                     <p>Software Developer</p>-->
                                 </a>
@@ -476,19 +536,19 @@ _________________________________________________________ -->
                         </div>
                         <div class="col-md-12">
                             <div class="col-md-4 profile">
-                                <a class="thumbnail" href="#"><img src="img/c28.png" alt="">
+                                <a class="thumbnail"  href=""><img src="img/c28.png" alt="">
                                     <!--<h5>Neha padhee</h5>
                                     <p>Software Developer</p>-->
                                 </a>
                             </div>
                             <div class="col-md-4 profile">
-                                <a class="thumbnail" href="#"><img src="img/c29.png" alt="">
+                                <a class="thumbnail"  href=""><img src="img/c29.png" alt="">
                                     <!--<h5>abc</h5>
                                     <p>Sales manager</p>-->
                                 </a>
                             </div>
                             <div class="col-md-4 profile">
-                                <a class="thumbnail" href="#"><img src="img/c30.png" alt="">
+                                <a class="thumbnail"  href=""><img src="img/c30.png" alt="">
                                     <!--<h5>xyz</h5>
                                     <p>HR manager</p>-->
                                 </a>
@@ -498,19 +558,19 @@ _________________________________________________________ -->
                     <div class="item">
                         <div class="col-md-12">
                             <div class="col-md-4 profile">
-                                <a class="thumbnail" href="#"><img src="img/c31.png" alt="">
+                                <a class="thumbnail"  href=""><img src="img/c31.png" alt="">
                                     <!--<h5>Gyana Ranjan Patra</h5>
                                     <p>Project lead</p>-->
                                 </a>
                             </div>
                             <div class="col-md-4 profile">
-                                <a class="thumbnail" href="#"><img src="img/c32.png" alt="">
+                                <a class="thumbnail"  href=""><img src="img/c32.png" alt="">
                                     <!--<h5>Lipsa Patra</h5>
                                     <p>Software Developer</p>-->
                                 </a>
                             </div>
                             <div class="col-md-4 profile">
-                                <a class="thumbnail" href="#"><img src="img/c33.gif" alt="">
+                                <a class="thumbnail"  href=""><img src="img/c33.gif" alt="">
                                     <!--<h5>Divya Ramachandra</h5>
                                     <p>Software Developer</p>-->
                                 </a>
@@ -518,19 +578,19 @@ _________________________________________________________ -->
                         </div>
                         <div class="col-md-12">
                             <div class="col-md-4 profile">
-                                <a class="thumbnail" href="#"><img src="img/c34.png" alt="">
+                                <a class="thumbnail"  href=""><img src="img/c34.png" alt="">
                                     <!--<h5>Neha padhee</h5>
                                     <p>Software Developer</p>-->
                                 </a>
                             </div>
                             <div class="col-md-4 profile">
-                                <a class="thumbnail" href="#"><img src="img/c1.jpg" alt="">
+                                <a class="thumbnail"  href=""><img src="img/c1.jpg" alt="">
                                     <!--<h5>abc</h5>
                                     <p>Sales manager</p>-->
                                 </a>
                             </div>
                             <div class="col-md-4 profile">
-                                <a class="thumbnail" href="#"><img src="img/c2.jpg" alt="">
+                                <a class="thumbnail"  href=""><img src="img/c2.jpg" alt="">
                                     <!--<h5>xyz</h5>
                                     <p>HR manager</p>-->
                                 </a>
